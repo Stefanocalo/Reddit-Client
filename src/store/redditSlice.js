@@ -11,13 +11,13 @@ const initialState = {
 };
 
 const redditSlice = createSlice({
-    name: 'redditPosts',
+    name: 'reddit',
     initialState: initialState,
     reducers: {
         getPosts: (state, action) => {
             state.posts = action.payload;
         },
-        startGetPosts: (state, action) => {
+        startGetPosts: (state) => {
             state.isLoading = true;
             state.error = false;
         },
@@ -25,7 +25,7 @@ const redditSlice = createSlice({
             state.isLoading = false;
             state.posts = action.payload;
         },
-        getPostsFail: (state, action) => {
+        getPostsFail: (state) => {
             state.isLoading = false;
             state.error = true;
         },
@@ -71,7 +71,7 @@ export const {
     startGetComments,
     getCommentSuccess,
     getCommentsFail
-} = redditSlice
+} = redditSlice.actions;
 
 export default redditSlice.reducer;
 

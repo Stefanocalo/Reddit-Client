@@ -1,0 +1,46 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    position: fixed;
+    top: 0;
+    height: 3rem;
+    width: 90%;
+    padding: 0 5%;
+    background-color: beige;
+}
+
+.logo,
+.searchBar {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    height: 1.5rem;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 0 0.3rem;
+    padding: 0 0.5rem;
+}
+
+.logo-icon {
+    width: auto;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+.reddit {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.lite {
+    color: blue;
+    font-weight: 600;
+}
+
+button {
+    background-color: beige;
+}
+
