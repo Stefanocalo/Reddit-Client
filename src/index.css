@@ -7,7 +7,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: var(--spacing-2);
+}
+
+main {
+  grid-column: 1/3;
+}
+
+aside {
+  grid-column: 3/4;
+}
+
+
+@media only screen and (max-width: 600px) {
+  #root {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    grid-column: 1;
+    padding: 1rem;
+  }
 }

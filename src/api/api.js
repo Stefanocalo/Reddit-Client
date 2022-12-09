@@ -11,9 +11,8 @@ export const getSubRedditsPosts = async (subreddit) => {
 export const getSubreddits = async () => {
     const response = await fetch(`${API_ROOT}/subreddits.json`);
     const json = await response.json();
-
-    
-    return json.data.map((children) => children.data);
+     
+    return json.data.children.map((element) => element.data);
   };
 
   export const getPostComments = async (permalink) => {

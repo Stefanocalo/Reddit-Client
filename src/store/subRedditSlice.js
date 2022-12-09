@@ -38,7 +38,8 @@ export const selectSubRedits = (state) => state.subreddits.subreddits;
 
 // thunk to get subReddits
 
-export const fetchSubReddits = async (dispatch) => {
+export const fetchSubReddits =() => async (dispatch) => {
+
     try {
         dispatch(startGetSubreddits());
         const subreddits = await getSubreddits();
