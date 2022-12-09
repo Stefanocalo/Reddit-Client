@@ -1,5 +1,64 @@
 .subredditsSection {
-    background-color: aqua;
-    width: 100%;
-    height: 10rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem;
+    color: rgb(99, 99, 99);
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+    box-shadow: 0px 10px 31px 0px rgba(0,0,0,0.56);
+
 }
+
+.subredditsSection h2 {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.subredditList {
+    margin: 0;
+    padding: 0;
+}
+
+.subredditIcon {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: 0 1rem;
+}
+
+.subredditName {
+    padding: 0 0.5rem;
+    font-weight: 600;
+}
+
+.subredditsSection button {
+    background-color: rgb(250, 250, 250);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 1.5rem 1rem 1.5rem 0;
+    border-radius: 7px;
+    color: rgb(99, 99, 99);
+}
+
+.subredditsSection button:hover {
+    background-color: rgba(114, 114, 114, 0.2);
+}
+
+ul {
+    width: 100%;
+    list-style: none;
+}
+
+.selectedSubreddit {
+    background-color:  rgb(84, 99, 186) !important;
+    color: rgb(250, 250, 250) !important;
+}
+
+
+

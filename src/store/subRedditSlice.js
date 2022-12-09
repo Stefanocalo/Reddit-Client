@@ -34,7 +34,7 @@ export const {
 
 export default subRedditSlice.reducer;
 
-export const selectSubRedits = (state) => state.subreddits.subreddits;
+export const selectSubReddits = (state) => state.subreddit.subreddits;
 
 // thunk to get subReddits
 

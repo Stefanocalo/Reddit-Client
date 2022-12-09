@@ -26,7 +26,6 @@ export const Header = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         dispatch(setSearchTerm(searchInput))
-        console.log(searchInput);
     }
 
     return (
@@ -44,7 +43,7 @@ export const Header = () => {
                 />
                 <button 
                 type="submit">
-                    <FaSearch className="logo-icon" />
+                    <FaSearch className="search-icon" />
                 </button>
             </form>
 
