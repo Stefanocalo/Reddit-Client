@@ -4,14 +4,20 @@ import { fetchSubReddits } from "../../store/subRedditSlice";
 import { selectSelectedSubReddits, setSelectedSubreddit } from "../../store/redditSlice";
 import { selectSubReddits } from "../../store/subRedditSlice";
 import './SubReddits.css';
-import { AnimatedList } from 'react-animated-list';
+import Skeleton from 'react-loading-skeleton'
+import { SubredditSkeleton } from "./subRedditSkeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 
 export const SubReddits = () => {
 
     const dispatch = useDispatch();
     const selectedSubReddits = useSelector(selectSelectedSubReddits);
-    const subreddits = useSelector(selectSubReddits);    
+    const subreddits = useSelector(selectSubReddits);  
+    
+    const sub = useSelector((state) => state.subreddit);
+    const {isLoading} = sub;
 
 
     useEffect(() => {
@@ -22,6 +28,7 @@ export const SubReddits = () => {
     return (
         <div className="subredditsSection">
             <h2>Subreddits</h2>
+            {isLoading && <SubredditSkeleton cards={(25)} />}
             <ul className="subredditList">
                 {subreddits.map((subreddit) => {
                     return(
