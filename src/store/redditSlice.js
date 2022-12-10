@@ -82,7 +82,8 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
     try {
       dispatch(startGetPosts());
       const posts = await getSubRedditsPosts(subreddit);
-  
+      
+      //hHiding comment as
       const postsWithMetadata = posts.map((post) => ({
         ...post,
         showingComments: false,
@@ -90,11 +91,13 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
         loadingComments: false,
         errorComments: false,
       }));
-      dispatch(getPostsSuccess(postsWithMetadata));
+      dispatch(getPostsSuccess(posts));
     } catch(error) {
       dispatch(getPostsFail());
     }
   };
+
+
 
   export const fetchComment = (index, permalink) => async (dispatch) => {
     try {
