@@ -27,7 +27,7 @@ export const SubReddits = () => {
 
     return (
         <div className="subredditsSection">
-            <h2>Subreddits</h2>
+            <h2 id='top'>Subreddits</h2>
             {isLoading && <SubredditSkeleton cards={(25)} />}
             <ul className="subredditList">
                 {subreddits.map((subreddit) => {
@@ -36,6 +36,7 @@ export const SubReddits = () => {
                     key={subreddit.id} >
                         <button type="button"
                         onClick={() =>{ dispatch(setSelectedSubreddit(subreddit.url))}}
+                        href='#'
                         className={`${selectedSubReddits === subreddit.url && 'selectedSubreddit'}`}>
                             <img 
                             src={subreddit.icon_img || `https://api.adorable.io/avatars/25/${subreddit.display_name}`}

@@ -83,7 +83,7 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
       dispatch(startGetPosts());
       const posts = await getSubRedditsPosts(subreddit);
       
-      //hHiding comment as
+      //hHiding comment as default
       const postsWithMetadata = posts.map((post) => ({
         ...post,
         showingComments: false,

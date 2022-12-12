@@ -7,7 +7,7 @@ import {BiCommentDetail} from 'react-icons/bi';
 export const PostSkeleton = ({cards}) => {
 
     return Array(cards).fill(0).map((item, index) => (
-        <div className="SkeletonContainer">
+        <div className="SkeletonContainer" key={index}>
         <div className="upsContainer">
             <TbArrowBigTop className="upsIcon" id='up' onClick={() => document.querySelector('#up').classList.toggle('active')} />
             <Skeleton width='1rem' />

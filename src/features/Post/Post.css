@@ -1,23 +1,74 @@
 
 
-.upsIcon {
+.up {
     font-size: 2rem;
     cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s;
 }
-#up:hover {
+
+.down {
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.up:hover {
+    color:  rgb(44, 213, 92);
+    background-color: rgb(224, 220, 220);
+}
+
+button {
+    background-color: rgb(250, 250, 250);
+}
+
+.down:hover {
+    
+    color:  rgb(248, 23, 64);
+    background-color: rgb(224, 220, 220);
+
+}
+
+.upActive {
+    font-size: 2rem;
+    cursor: pointer;
     color:  rgb(44, 213, 92);
 }
 
-#down:hover {
+.downActive {
+    font-size: 2rem;
+    cursor: pointer;
     color:  rgb(248, 23, 64);
 }
 
-#up.active {
+.upActive:hover {
+    font-size: 2rem;
+    cursor: pointer;
     color:  rgb(44, 213, 92);
+    background-color: rgb(207, 249, 195);
+    border-radius: 50%;
 }
 
-#down.active {
+.upVote {
+    color:  rgb(44, 213, 92);
+    font-weight: 700;
+
+}
+
+.downVote {
+    font-weight: 700;
     color:  rgb(248, 23, 64);
+}
+
+.downActive:hover {
+    font-size: 2rem;
+    cursor: pointer;
+    color:  rgb(248, 23, 64);
+    background-color: rgb(252, 201, 201);
+    border-radius: 50%;
+
+
 }
 
 .postContainer {
@@ -80,6 +131,9 @@ img {
     align-items: center;
     font-size: 2rem;
     cursor: pointer;
+    background-color:  rgb(250, 250, 250);
+    transition: 0.3s;
+    border-radius: 8px;
 }
 
 .commentIcon {
@@ -87,7 +141,6 @@ img {
 }
 
 .comments:hover {
-    color:  rgb(61, 61, 61);
-    
-;
+    color:  rgb(0, 0, 0);
+    background-color: rgb(224, 220, 220);
 }

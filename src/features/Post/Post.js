@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
 import {BiCommentDetail} from 'react-icons/bi';
 import moment from 'moment';
-import { PostSkeleton } from "./PostSkeleton";
 
-export const Post = ({post, index}) => {
+export const Post = ({post}) => {
+
+    const [vote, setVote] = useState(0);
 
     const generateImage = (url) => {
         if(url) {
@@ -13,13 +14,59 @@ export const Post = ({post, index}) => {
         }
     }
 
+    const handleVoteUP = (newValue) => {
+        if (newValue === vote) {
+            setVote(0);
+        } else {
+            setVote(newValue)
+        }
+    };
+
+    const handleVoteDOWN = (newValue) => {
+        if (newValue === vote) {
+            setVote(0);
+        } else {
+            setVote(-1)
+        }
+    };
+
+    const renderArrowUp = (vote) => {
+        if (vote > 0) {
+            return  <TbArrowBigTop className="upActive" />
+        } else {
+            return  <TbArrowBigTop className="up" />
+        }
+    };
+
+    const renderArrowDown = (vote) => {
+        if (vote < 0) {
+            return  <TbArrowBigDown className="downActive"/>
+        } else {
+            return  <TbArrowBigDown className="down"/>
+        }
+    }
+
+    const renderUps = (vote) => {
+        if(vote === 1) {
+            return <p className='upVote'>{post.ups +1}</p>
+        } else if (vote === -1) {
+            return <p className='downVote'>{post.ups -1}</p>
+        } else if (vote === 0) {
+            return <p>{post.ups}</p>
+        }
+    }
+
 
     return (
-        <div className="postContainer">
+        <div className="postContainer" key={post.id}>
             <div className="upsContainer">
-                <TbArrowBigTop className="upsIcon" id='up' onClick={() => document.querySelector('#up').classList.toggle('active')} />
-                <p>{post.ups}</p>
-                <TbArrowBigDown className="upsIcon" id='down'/>
+                <button onClick={() => handleVoteUP(1)}>
+                    {renderArrowUp(vote)}
+                </button>
+                {renderUps(vote)}
+                <button onClick={() => handleVoteDOWN(-1)}>
+                    {renderArrowDown(vote)}
+                </button>
             </div>
             <div className="main">
                 <div className="titleContainer">
@@ -31,10 +78,10 @@ export const Post = ({post, index}) => {
                 <div className="detailsContainer">
                     <span className="author">{post.author}</span>
                     <span className="time">{moment.unix(post.created_utc).fromNow()}</span>
-                    <div className="comments">
+                        <button className="comments">
                         <BiCommentDetail className="commentIcon"/>
                         <p>{post.num_comments}</p>
-                    </div>
+                        </button>  
                 </div>     
             </div>       
         </div>
