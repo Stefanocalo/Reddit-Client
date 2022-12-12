@@ -4,7 +4,8 @@ import './App.css';
 import { Header } from './features/Header/Header';
 import { SubReddits } from './features/SubReddits/SubReddits';
 import { Feed } from './features/Feed/Feed';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { SkeletonTheme } from 'react-loading-skeleton'
+
 
 function App() {
   return (

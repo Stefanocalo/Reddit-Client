@@ -35,7 +35,7 @@ export const SubReddits = () => {
                     <li
                     key={subreddit.id} >
                         <button type="button"
-                        onClick={() => dispatch(setSelectedSubreddit(subreddit.url))}
+                        onClick={() =>{ dispatch(setSelectedSubreddit(subreddit.url))}}
                         className={`${selectedSubReddits === subreddit.url && 'selectedSubreddit'}`}>
                             <img 
                             src={subreddit.icon_img || `https://api.adorable.io/avatars/25/${subreddit.display_name}`}

@@ -3,6 +3,7 @@ import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
 import {BiCommentDetail} from 'react-icons/bi';
 import moment from 'moment';
+import { PostSkeleton } from "./PostSkeleton";
 
 export const Post = ({post, index}) => {
 
@@ -32,10 +33,10 @@ export const Post = ({post, index}) => {
                     <span className="time">{moment.unix(post.created_utc).fromNow()}</span>
                     <div className="comments">
                         <BiCommentDetail className="commentIcon"/>
-                        <p>124</p>
+                        <p>{post.num_comments}</p>
                     </div>
                 </div>     
             </div>       
         </div>
-    )
+)
 }

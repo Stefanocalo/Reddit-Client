@@ -1,0 +1,33 @@
+.detailsContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-top: 1px solid;
+}
+
+.titleContainer {
+    padding: 1rem 0;
+}
+
+.SkeletonContainer {
+    width: 90%;
+    height: auto;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.16);
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around
+}
+
+.detailsContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-top: 1px solid;
+}
+
+.comments {
+    display: flex;
+    align-items: center;
+}
