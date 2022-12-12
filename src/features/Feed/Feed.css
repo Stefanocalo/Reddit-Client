@@ -1,9 +1,9 @@
 .feedContainer {
-    height: 200rem;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 1rem;
     color: rgb(99, 99, 99);
     background-color: rgb(250, 250, 250);
