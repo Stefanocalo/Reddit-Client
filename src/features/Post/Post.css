@@ -79,7 +79,6 @@ button {
     padding: 1.5rem;
     border-radius: 10px;
     display: flex;
-    justify-content: space-around
 }
 
 .titleContainer h3{
@@ -143,4 +142,8 @@ img {
 .comments:hover {
     color:  rgb(0, 0, 0);
     background-color: rgb(224, 220, 220);
+}
+
+.main {
+    width: 100%;
 }

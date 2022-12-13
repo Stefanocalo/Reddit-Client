@@ -6,6 +6,8 @@ import { SubReddits } from './features/SubReddits/SubReddits';
 import { Feed } from './features/Feed/Feed';
 import { SkeletonTheme } from 'react-loading-skeleton'
 
+import ScrollButton from './features/scrollButton/ScrollButton';
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
     <aside>
       <SubReddits />
     </aside>
+    < ScrollButton />
     </SkeletonTheme >
     </>
   )

@@ -3,8 +3,10 @@ import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
 import {BiCommentDetail} from 'react-icons/bi';
 import moment from 'moment';
+import { Comments } from "../Comments/Comments";
+import { CommentSkeleton } from "../Comments/CommentSkeleton";
 
-export const Post = ({post}) => {
+export const Post = ({post, onToggleComment}) => {
 
     const [vote, setVote] = useState(0);
 
@@ -13,6 +15,8 @@ export const Post = ({post}) => {
             return( <img src={url} alt=""/>)
         }
     }
+
+    // Ups arrows rendering handler funcitons
 
     const handleVoteUP = (newValue) => {
         if (newValue === vote) {
@@ -56,8 +60,36 @@ export const Post = ({post}) => {
         }
     }
 
+    // Rendering comments handler function
+
+    const renderComments = () => {
+        if (post.errorComments) {
+          return (
+            <div>
+              <h3>Error loading comments</h3>
+            </div>
+          );
+        }
+    
+        if (post.loadingComments) {
+          return <CommentSkeleton cards={5} />
+        }
+    
+        if (post.showingComments) {
+          return (
+            <div>
+              {post.comments.map((comment) => (
+                <Comments comment={comment} key={comment.id} />
+              ))}
+            </div>
+          );
+        }
+    
+        return null;
+    };
 
     return (
+        <div className="main">
         <div className="postContainer" key={post.id}>
             <div className="upsContainer">
                 <button onClick={() => handleVoteUP(1)}>
@@ -78,12 +110,18 @@ export const Post = ({post}) => {
                 <div className="detailsContainer">
                     <span className="author">{post.author}</span>
                     <span className="time">{moment.unix(post.created_utc).fromNow()}</span>
-                        <button className="comments">
+                        <button
+                         className="comments"
+                         onClick={() => {onToggleComment(post.permalink)}}>
                         <BiCommentDetail className="commentIcon"/>
                         <p>{post.num_comments}</p>
                         </button>  
                 </div>     
-            </div>       
+            </div>   
+            </div> 
+            <div className="commentsSection">
+                 {renderComments()}
+            </div>
         </div>
 )
 }

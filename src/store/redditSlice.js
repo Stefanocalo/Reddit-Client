@@ -48,14 +48,17 @@ const redditSlice = createSlice({
                 state.posts[action.payload].showingComments = true;
                 state.posts[action.payload].error = false;
             };
+            state.posts[action.payload].loadingComments = true;
+            state.posts[action.payload]. error = false;
         },
         getCommentSuccess: (state, action) => {
             state.posts[action.payload.index].loadingComments = false;
             state.posts[action.payload.index].comments = action.payload.comments;
+            
         },
         getCommentsFail: (state, action) => {
-            state.posts[action.payload.index].loadingComments = false;
-            state.posts[action.payload.index].error = true;
+            state.posts[action.payload].loadingComments = false;
+            state.posts[action.payload].error = true;
         }
     }
 })
@@ -89,9 +92,9 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
         showingComments: false,
         comments: [],
         loadingComments: false,
-        errorComments: false,
+        error: false,
       }));
-      dispatch(getPostsSuccess(posts));
+      dispatch(getPostsSuccess(postsWithMetadata));
     } catch(error) {
       dispatch(getPostsFail());
     }
@@ -103,9 +106,11 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
     try {
         dispatch(startGetComments(index));
         const comments = await getPostComments(permalink);
-        dispatch(getCommentSuccess(index, comments));
+        dispatch(getCommentSuccess({index: index, comments: comments}));
+        
     } catch(error) {
         dispatch(getCommentsFail(index));
+        console.log(error);
     }
   };
 
