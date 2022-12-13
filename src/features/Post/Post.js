@@ -6,7 +6,6 @@ import moment from 'moment';
 import { Comments } from "../Comments/Comments";
 import { CommentSkeleton } from "../Comments/CommentSkeleton";
 import { numShortener } from "../../utils/numShortener";
-import { fetchComment } from "../../store/redditSlice";
 
 
 export const Post = ({post, onToggleComment}) => {

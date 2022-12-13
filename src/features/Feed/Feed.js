@@ -2,15 +2,14 @@ import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts,
         fetchComment,
-        selectPosts,
         setSearchTerm,
         selectFilteredPosts} from "../../store/redditSlice";
-
 import { Post } from "../Post/Post.js";
 import { PostSkeleton } from "../Post/PostSkeleton";
 import {BiErrorCircle} from 'react-icons/bi';
 
 import './Feed.css';
+
 
 export const Feed = () => {
     const dispatch = useDispatch();
@@ -41,7 +40,7 @@ export const Feed = () => {
                 <h4 className="errorMessage"> The search has prouces no results </h4>
                 <button 
                 className="errorButton"
-                onClick={() => {dispatch(fetchPosts(selectedSubReddits))}}>
+                onClick={() => {dispatch(setSearchTerm(''))}}>
                    Back
                 </button>
             </div>
@@ -68,7 +67,7 @@ export const Feed = () => {
             {isLoading && <PostSkeleton cards={10} />}
             {posts.map((post, index) => {
                 return (
-                         <Post
+                        <Post
                     post={post}
                     key={post.id}
                     onToggleComment={onToggleComment(index)}/> 
