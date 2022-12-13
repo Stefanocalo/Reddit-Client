@@ -33,19 +33,7 @@ export const Feed = () => {
     // Error Handling
 
 
-    if(posts.length === 0) {
-        return(
-            <div className="error">
-                <BiErrorCircle className="errorIcon"/>
-                <h4 className="errorMessage"> The search has prouces no results </h4>
-                <button 
-                className="errorButton"
-                onClick={() => {dispatch(setSearchTerm(''))}}>
-                   Back
-                </button>
-            </div>
-        )
-    }
+    
 
     if(error) {
         return(
@@ -61,10 +49,29 @@ export const Feed = () => {
         )
     }
 
+    if(isLoading) {
+        return(
+            <PostSkeleton cards={20} />
+        )
+    }
+
+    if(posts.length === 0) {
+        return(
+            <div className="error">
+                <BiErrorCircle className="errorIcon"/>
+                <h4 className="errorMessage"> The search has prouces no results </h4>
+                <button 
+                className="errorButton"
+                onClick={() => {dispatch(setSearchTerm(''))}}>
+                   Back
+                </button>
+            </div>
+        )
+    }
+
     
     return (
         <div className="feedContainer">
-            {isLoading && <PostSkeleton cards={10} />}
             {posts.map((post, index) => {
                 return (
                         <Post
