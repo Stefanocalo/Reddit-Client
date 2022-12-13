@@ -5,6 +5,7 @@ import {BiCommentDetail} from 'react-icons/bi';
 import moment from 'moment';
 import { Comments } from "../Comments/Comments";
 import { CommentSkeleton } from "../Comments/CommentSkeleton";
+import { numShortener } from "../../utils/numShortener";
 
 export const Post = ({post, onToggleComment}) => {
 
@@ -52,11 +53,13 @@ export const Post = ({post, onToggleComment}) => {
 
     const renderUps = (vote) => {
         if(vote === 1) {
-            return <p className='upVote'>{post.ups +1}</p>
+            const total = post.ups +1;
+            return <p className='upVote'>{numShortener(total)}</p>
         } else if (vote === -1) {
-            return <p className='downVote'>{post.ups -1}</p>
+            const total = post.ups -1;
+            return <p className='downVote'>{numShortener(total)}</p>
         } else if (vote === 0) {
-            return <p>{post.ups}</p>
+            return <p>{numShortener(post.ups)}</p>
         }
     }
 
