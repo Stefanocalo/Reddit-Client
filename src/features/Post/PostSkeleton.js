@@ -18,7 +18,7 @@ export const PostSkeleton = ({cards}) => {
                 <Skeleton width='80%' />
             </div>
             <div className="imageContainer">
-                <Skeleton  width='100%' height='15rem'  />
+                <Skeleton  width='90%' height='15rem'  />
             </div>
             <div className="detailsContainer">
                  <Skeleton width='5rem' />

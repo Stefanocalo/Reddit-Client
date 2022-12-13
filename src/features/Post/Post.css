@@ -83,6 +83,8 @@ button {
 
 .titleContainer h3{
     font-size: 1.5rem;
+    margin: 0 5%;
+    width: 90%;
 }
 
 .upsContainer {
@@ -94,7 +96,7 @@ button {
 .imageContainer {
     width: 100%;
     overflow: hidden;
-    padding-bottom: 1rem;
+    margin: 5%;
 }
 
 .main {
@@ -111,7 +113,7 @@ button {
 }
 
 img {
-    width: 100%;
+    width: 90%;
     height: auto;
     border-radius: 10px;
 }

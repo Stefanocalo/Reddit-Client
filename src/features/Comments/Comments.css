@@ -11,7 +11,31 @@
     overflow: hidden;
 }
 
+.replyWrapper {
+    width: 70%;
+    height: auto;
+    display: block;
+    padding: 1.5rem;
+    border-radius: 15px;
+    transition: 0.3s;
+    background-color: rgb(240, 240, 240);
+    margin: 0.7rem 0 0.7rem 3rem;
+    overflow: hidden;
+    
+}
+
+.replyContainer {
+    width: 90%;
+    height: 50%;
+    border-left: 1px solid rgb(84, 99, 186);;
+    margin-left: 5%;
+}
+
 .commentWrapper:hover {
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.16);
+}
+
+.replyWrapper:hover {
     box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.16);
 }
 

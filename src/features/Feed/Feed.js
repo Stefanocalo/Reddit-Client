@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts,
         fetchComment,
         selectPosts,
-        selectSelectedSubReddits} from "../../store/redditSlice";
+        } from "../../store/redditSlice";
 
 import { Post } from "../Post/Post.js";
 import { PostSkeleton } from "../Post/PostSkeleton";
@@ -34,11 +34,12 @@ export const Feed = () => {
             {isLoading && <PostSkeleton cards={10} />}
             {posts.map((post, index) => {
                 return (
-                    <Post
+                         <Post
                     post={post}
                     key={post.id}
-                    onToggleComment={onToggleComment(index)}/>
+                    onToggleComment={onToggleComment(index)}/> 
                 )
+                   
             })}
         </div>
     )
