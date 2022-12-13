@@ -3,19 +3,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts,
         fetchComment,
         selectPosts,
-        } from "../../store/redditSlice";
+        setSearchTerm,
+        selectFilteredPosts} from "../../store/redditSlice";
 
 import { Post } from "../Post/Post.js";
 import { PostSkeleton } from "../Post/PostSkeleton";
+import {BiErrorCircle} from 'react-icons/bi';
 
 import './Feed.css';
 
 export const Feed = () => {
     const dispatch = useDispatch();
     const reddit = useSelector((state) => state.reddit);
-    const {isLoading, } = reddit;
+    const {isLoading, error } = reddit;
     const {selectedSubReddits} = reddit
-    const posts = useSelector(selectPosts)
+    const posts = useSelector(selectFilteredPosts)
 
     useEffect(() => {
         dispatch(fetchPosts(selectedSubReddits))
@@ -27,6 +29,38 @@ export const Feed = () => {
         }
         return getComments
     };
+
+
+    // Error Handling
+
+
+    if(posts.length === 0) {
+        return(
+            <div className="error">
+                <BiErrorCircle className="errorIcon"/>
+                <h4 className="errorMessage"> The search has prouces no results </h4>
+                <button 
+                className="errorButton"
+                onClick={() => {dispatch(fetchPosts(selectedSubReddits))}}>
+                   Back
+                </button>
+            </div>
+        )
+    }
+
+    if(error) {
+        return(
+            <div className="error">
+                <BiErrorCircle className="errorIcon"/>
+                <h4 className="errorMessage"> There has been a problem </h4>
+                <button 
+                    className="errorButton"
+                    onClick={() => {dispatch(setSearchTerm(''))}}>
+                    Try Again
+                </button>
+        </div>
+        )
+    }
 
     
     return (

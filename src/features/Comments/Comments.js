@@ -23,7 +23,6 @@ export const Comments = ({comment, id}) => {
                     </div>
                 </div>
             ))}
-            
         </div>
 
     )

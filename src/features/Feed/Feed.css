@@ -7,3 +7,43 @@
     padding: 1rem;
     color: rgb(99, 99, 99);
 }
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 4rem;
+}
+
+.errorIcon {
+    font-size: 3rem;
+    padding: 1.2rem;
+}
+
+.errorMessage {
+    font-size: 1.3rem;
+    padding-bottom: 2rem;
+}
+
+.errorButton {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px;
+    background-color: rgb(84, 99, 186);
+    color: rgb(250, 250, 250);
+    display: flex;
+    align-content: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.errorButton:hover {
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.16);
+}
+
+.errorButton:active {
+    background-color: rgb(63, 74, 137);
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.16);
+}

@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
-import {BiCommentDetail} from 'react-icons/bi';
+import {BiCommentDetail, BiErrorCircle} from 'react-icons/bi';
 import moment from 'moment';
 import { Comments } from "../Comments/Comments";
 import { CommentSkeleton } from "../Comments/CommentSkeleton";
 import { numShortener } from "../../utils/numShortener";
+import { fetchComment } from "../../store/redditSlice";
+
 
 export const Post = ({post, onToggleComment}) => {
 
@@ -68,8 +70,9 @@ export const Post = ({post, onToggleComment}) => {
     const renderComments = () => {
         if (post.errorComments) {
           return (
-            <div>
-              <h3>Error loading comments</h3>
+            <div className="error">
+                <BiErrorCircle className="errorIcon"/>
+                <h4 className="errorMessage"> Error loading comments. </h4>
             </div>
           );
         }

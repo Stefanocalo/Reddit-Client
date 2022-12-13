@@ -4,8 +4,8 @@ import { fetchSubReddits } from "../../store/subRedditSlice";
 import { selectSelectedSubReddits, setSelectedSubreddit } from "../../store/redditSlice";
 import { selectSubReddits } from "../../store/subRedditSlice";
 import './SubReddits.css';
-import Skeleton from 'react-loading-skeleton'
 import { SubredditSkeleton } from "./subRedditSkeleton";
+import {BiErrorCircle} from 'react-icons/bi';
 import 'react-loading-skeleton/dist/skeleton.css'
 
 
@@ -17,13 +17,26 @@ export const SubReddits = () => {
     const subreddits = useSelector(selectSubReddits);  
     
     const sub = useSelector((state) => state.subreddit);
-    const {isLoading} = sub;
+    const {isLoading, error} = sub;
 
 
     useEffect(() => {
         dispatch(fetchSubReddits());
     }, [dispatch]);
-
+    
+    if(error) {
+        return(
+            <div className="error">
+                <BiErrorCircle className="errorIcon"/>
+                <h4 className="errorMessage"> There has been a problem </h4>
+                <button 
+                    className="errorButton"
+                    onClick={() => {dispatch(fetchSubReddits())}}>
+                    Try Again
+                </button>
+            </div>
+        )
+    }
 
     return (
         <div className="subredditsSection">

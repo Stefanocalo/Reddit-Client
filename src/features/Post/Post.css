@@ -149,3 +149,22 @@ img {
 .main {
     width: 100%;
 }
+
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 4rem;
+}
+
+.errorIcon {
+    font-size: 3rem;
+    padding: 1.2rem;
+}
+
+.errorMessage {
+    font-size: 1.3rem;
+    padding-bottom: 2rem;
+}

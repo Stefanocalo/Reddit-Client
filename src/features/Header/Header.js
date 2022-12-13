@@ -22,6 +22,10 @@ export const Header = () => {
         setSearchInput(target.value);
     };
 
+    useEffect(() => {
+        setSearchInput(searchTerm);
+      }, [searchTerm]);
+
     // Handle Submit
     const handleFormSubmit = (e) => {
         e.preventDefault();

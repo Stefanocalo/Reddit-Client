@@ -32,6 +32,11 @@
     border-top: 1px solid;
 }
 
+.imageContainer {
+    width: 100%;
+    margin: 5%;
+}
+
 .comments {
     display: flex;
     align-items: center;
