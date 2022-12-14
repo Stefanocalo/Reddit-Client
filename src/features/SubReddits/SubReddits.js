@@ -23,6 +23,27 @@ export const SubReddits = () => {
     useEffect(() => {
         dispatch(fetchSubReddits());
     }, [dispatch]);
+
+    const clickHandler = (url) => {
+        dispatch(setSelectedSubreddit(url))
+        window.scrollTo({ top:0})
+
+        const hamburgher = document.querySelector('.hamburgherMenu');
+        const subReddit = document.querySelector('aside');
+        const header = document.querySelector('header');
+        const main = document. querySelector('main');
+        const search = document.querySelector('.searchBar');
+
+        
+        hamburgher.classList.remove('active');
+        subReddit.classList.remove('active');
+        header.classList.remove('active');
+        main.classList.remove('active');
+        search.classList.remove('active');
+
+       
+    }
+
     
     if(error) {
         return(
@@ -46,11 +67,11 @@ export const SubReddits = () => {
                 {subreddits.map((subreddit) => {
                     return(
                     <li
-                    key={subreddit.id} >
+                    key={subreddit.id}
+                    className='subList' >
                         <button type="button"
-                        onClick={() =>{ 
-                            dispatch(setSelectedSubreddit(subreddit.url))
-                            window.scrollTo({ top:0})}}
+                        onClick={() =>{clickHandler(subreddit.url)}
+                        }
                         
                         className={`${selectedSubReddits === subreddit.url && 'selectedSubreddit'}`}>
                             <img 

@@ -49,7 +49,7 @@ export const Header = () => {
         main.classList.toggle('active');
         search.classList.toggle('active');
 
-        
+       
     }
 
     

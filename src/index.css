@@ -34,8 +34,10 @@ aside {
   }
 
   main.active {
-    animation: disappear 1s;
-   
+    position: absolute;
+    animation: disappear 1s 0.5s;
+    opacity: 0;
+    display: none;
   }
 
 
@@ -47,29 +49,14 @@ aside {
     left: -100%;
     padding: 3.8rem 0 4.5rem 0;
     z-index: 9;
-    transition: 0.3s ease-in;
+    transition: 0.2s ease-out;
   }
 
   aside.active {
-    animation: bounce 0.3s;
+    left: 0;
   }
 }
 
-/* Aside Animation */
-
-@keyframes bounce {
-  0% {
-      left: -100%;
-      opacity: 0.5;
-  }
-  60% {
-      left: 5%;
-      opacity: 1;
-  }
-  100% {
-      left: 0;
-  }
-}
 
 /* Feed animation */
 
