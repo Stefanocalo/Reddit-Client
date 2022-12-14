@@ -19,3 +19,11 @@
     font-size: 1.1rem;
     padding-right: 0.5rem;
 }
+
+@media only screen and (max-width: 600px) {
+    .scrollTop {
+        bottom: 5rem;
+        right: 0.5rem;
+        z-index: 10;
+    }
+}

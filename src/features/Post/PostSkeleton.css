@@ -41,3 +41,20 @@
     display: flex;
     align-items: center;
 }
+
+@media only screen and (max-width: 600px) {
+    .SkeletonContainer {
+        padding: 0 2rem;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .comments {
+        display: flex;
+        align-items: center;
+        transition: 0.3s;
+        border-radius: 8px;
+    }
+    
+}

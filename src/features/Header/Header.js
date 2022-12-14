@@ -6,6 +6,7 @@ import { setSearchTerm } from "../../store/redditSlice";
 import { FaReddit, FaSearch } from "react-icons/fa";
 // Import CSS
 import './Header.css';
+import '../../index.css';
 
 export const Header = () => {
 
@@ -32,8 +33,32 @@ export const Header = () => {
         dispatch(setSearchTerm(searchInput))
     }
 
+    //Handle hamburgher menu click
+
+    const onHamburgherClick = () => {
+        const hamburgher = document.querySelector('.hamburgherMenu');
+        const subReddit = document.querySelector('aside');
+        const header = document.querySelector('header');
+        const main = document. querySelector('main')
+
+        
+        hamburgher.classList.toggle('active');
+        subReddit.classList.toggle('active');
+        header.classList.toggle('active');
+        main.classList.toggle('active');
+    }
+
+    
     return (
         <header>
+
+            <div className="hamburgherMenu" 
+                onClick={() => { onHamburgherClick()}}>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+
+            </div>
             <div className='logo'>
             <FaReddit className="logo-icon" />
             <p className='reddit'>Reddit<span className='lite'>Lite</span></p>

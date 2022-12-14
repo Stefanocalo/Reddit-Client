@@ -12,6 +12,10 @@ header {
     z-index: 100;
 }
 
+.hamburgherMenu {
+    display: none;
+}
+
 .logo,
 .searchBar {
     display: flex;
@@ -55,5 +59,63 @@ input {
 
 .searchBar button {
     background-color: rgb(250, 250, 250);
+}
+
+@media only screen and (max-width: 600px) {
+
+    header {
+        justify-content: center;
+    }
+
+    header.active {
+        box-shadow: none;
+    }
+
+    input {
+        
+        height: 1.5rem;
+        margin: 0;
+        padding: 0.5rem 1rem;
+        width: 60%;
+        background-color: rgba(114, 114, 114, 0.2);
+    }
+
+    .searchBar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgb(250, 250, 250);
+        padding: 1rem 0;
+        justify-content: center;
+        border-top: 1px solid  rgb(72, 72, 72);;
+        box-shadow: 0px 10px 19px 0px rgba(0,0,0,0.56);
+    }
+
+    .hamburgherMenu {
+        display: block;
+        position: fixed;
+        left: 1rem;
+    }
+
+    .hamburgherMenu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburgherMenu.active .bar:nth-child(1) {
+        transform: translateY(0.5rem) rotate(405deg);
+    }
+
+    .hamburgherMenu.active .bar:nth-child(3) {
+        transform: translateY(-0.5rem) rotate(-405deg) ;    }
+
+
+    .bar  {
+        padding: 0.1rem 0.8rem;
+        background-color: rgb(114, 114, 114);
+        border-radius: 10px;
+        margin: 0.3rem 0;
+        transition: 0.3s;
+    }
 }
 

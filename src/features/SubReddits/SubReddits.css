@@ -92,5 +92,9 @@ ul {
     font-size: 1.3rem;
 }
 
-
+@media only screen and (max-width: 600px) {
+    .subredditsSection{
+        box-shadow: none;
+    }
+}
 
