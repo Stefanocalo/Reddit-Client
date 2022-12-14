@@ -48,6 +48,8 @@ export const Header = () => {
         header.classList.toggle('active');
         main.classList.toggle('active');
         search.classList.toggle('active');
+
+        
     }
 
     

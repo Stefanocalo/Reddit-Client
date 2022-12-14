@@ -34,10 +34,8 @@ aside {
   }
 
   main.active {
-    position: absolute;
     animation: disappear 1s;
-    opacity: 0;
-    display: none;
+   
   }
 
 
@@ -53,7 +51,6 @@ aside {
   }
 
   aside.active {
-    left: 0;
     animation: bounce 0.3s;
   }
 }
