@@ -3,6 +3,8 @@ import {FaArrowCircleUp} from 'react-icons/fa';
 import './ScrollButton.css';
   
 export const ScrollButton = () => {
+
+
   
   const [visible, setVisible] = useState(false)
   
@@ -29,7 +31,7 @@ export const ScrollButton = () => {
     <button 
     className='scrollTop'
     onClick={scrollToTop}
-    style={{display: visible ? 'inline' : 'none'}}>
+    style={{bottom: visible ? '1rem' : '-3rem'}}>
      <FaArrowCircleUp className='topIcon' />
      Scroll Top
     </button>
