@@ -18,8 +18,6 @@ export const Header = () => {
 
     const dispatch = useDispatch();
 
-    const hamburgher = document.querySelector('.hamburgherMenu');
-    const subReddit = document.querySelector('aside');
     const header = document.querySelector('header');
     const main = document. querySelector('main');
     const search = document.querySelector('.searchBar');
@@ -38,21 +36,23 @@ export const Header = () => {
         e.preventDefault();
         dispatch(setSearchTerm(searchInput))
 
-        hamburgher.classList.remove('active');
-        subReddit.classList.remove('active');
-        header.classList.remove('active');
-        main.classList.remove('active');
-        search.classList.remove('active');
+        document.querySelector('.hamburgherMenu').classList.remove('active');
+        document.querySelector('aside').classList.remove('active');
+        document.querySelector('header').classList.remove('active');
+        document. querySelector('main').classList.remove('active');
+        document.querySelector('.searchBar').classList.remove('active');
     }
 
     //Handle hamburgher menu click
 
     const onHamburgherClick = () => {
-        hamburgher.classList.toggle('active');
-        subReddit.classList.toggle('active');
-        header.classList.toggle('active');
-        main.classList.toggle('active');
-        search.classList.toggle('active');
+        document.querySelector('.hamburgherMenu').classList.toggle('active');
+        document.querySelector('aside').classList.toggle('active');
+        document.querySelector('header').classList.toggle('active');
+        document. querySelector('main').classList.toggle('active');
+        document.querySelector('.searchBar').classList.toggle('active');
+        
+
     }
 
     
@@ -60,7 +60,7 @@ export const Header = () => {
         <header>
 
             <div className="hamburgherMenu" 
-                onClick={() => { onHamburgherClick()}}>
+                onClick={() => {onHamburgherClick()}}>
                 <div className="bar"></div>
                 <div className="bar"></div>
                 <div className="bar"></div>

@@ -31,7 +31,7 @@ export const ScrollButton = () => {
     <button 
     className='scrollTop'
     onClick={scrollToTop}
-    style={{bottom: visible ? '1rem' : '-3rem'}}>
+    style={{bottom: visible ? '2rem' : '-3rem'}}>
      <FaArrowCircleUp className='topIcon' />
      Scroll Top
     </button>
