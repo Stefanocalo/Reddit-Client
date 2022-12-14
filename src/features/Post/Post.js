@@ -11,6 +11,7 @@ import { numShortener } from "../../utils/numShortener";
 export const Post = ({post, onToggleComment}) => {
 
     const [vote, setVote] = useState(0);
+    const [numComm, setNumComm] = useState(3)
 
     const generateImage = (url) => {
         if(url) {
@@ -64,9 +65,18 @@ export const Post = ({post, onToggleComment}) => {
         }
     }
 
+    // CLick handler - comment button
+
+    const incrementer = () => {
+    
+        setNumComm(numComm + 2);
+        console.log(numComm)
+    }
+
     // Rendering comments handler function
 
     const renderComments = () => {
+
         if (post.errorComments) {
           return (
             <div className="error">
@@ -81,11 +91,16 @@ export const Post = ({post, onToggleComment}) => {
         }
     
         if (post.showingComments) {
+
           return (
             <div>
-              {post.comments.map((comment) => (
+              {post.comments.map((comment, index) => index < numComm && (
                 <Comments comment={comment} key={comment.id} />
               ))}
+              <button
+                className='commentButton'
+                onClick={() => incrementer()}
+                >Load more...</button>
             </div>
           );
         }
