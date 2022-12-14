@@ -39,13 +39,15 @@ export const Header = () => {
         const hamburgher = document.querySelector('.hamburgherMenu');
         const subReddit = document.querySelector('aside');
         const header = document.querySelector('header');
-        const main = document. querySelector('main')
+        const main = document. querySelector('main');
+        const search = document.querySelector('.searchBar');
 
         
         hamburgher.classList.toggle('active');
         subReddit.classList.toggle('active');
         header.classList.toggle('active');
         main.classList.toggle('active');
+        search.classList.toggle('active');
     }
 
     
