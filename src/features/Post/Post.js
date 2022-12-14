@@ -79,14 +79,8 @@ export const Post = ({post, onToggleComment}) => {
 
     const renderMoreComments = () => {
 
-        if(numComm < 2) {
-            return(
-                <button
-                    className='commentButton'
-                    onClick={() => incrementer()}
-                    >Load more...
-                </button>
-            )
+        if(numComm <= 2 || post.comments.length <= 2) {
+            return
         } else if(post.comments.length > numComm) {
             return(
                 <div className="commButtons">
