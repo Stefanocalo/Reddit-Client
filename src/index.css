@@ -33,6 +33,10 @@ aside {
     flex-direction: column;
   }
 
+  main.active {
+    display: none;
+  }
+
   aside {
     position: absolute;
     top: 0rem;
