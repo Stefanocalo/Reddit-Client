@@ -16,6 +16,10 @@
     font-size: 1.3rem;
 }
 
+.scrollTop:hover {
+    background-color: rgb(61, 73, 145);
+}
+
 .topIcon {
     font-size: 1.1rem;
     padding: 0.25rem 0.5rem 0 0;

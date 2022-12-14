@@ -68,9 +68,50 @@ export const Post = ({post, onToggleComment}) => {
     // CLick handler - comment button
 
     const incrementer = () => {
-    
         setNumComm(numComm + 2);
-        console.log(numComm)
+    }
+
+    const decrementer = () => {
+        setNumComm(numComm - 2)
+    }
+
+    // Rendering show more comments button
+
+    const renderMoreComments = () => {
+
+        if(numComm < 2) {
+            return(
+                <button
+                    className='commentButton'
+                    onClick={() => incrementer()}
+                    >Load more...
+                </button>
+            )
+        } else if(post.comments.length > numComm) {
+            return(
+                <div className="commButtons">
+                    <button
+                        className='commentButton'
+                        onClick={() => incrementer()}
+                        >Load more...
+                    </button>
+
+                    <button
+                        className='commentButton'
+                        onClick={() => decrementer()}
+                        >Show less
+                    </button>    
+                </div>
+            )
+        } else if(numComm > post.comments.length) {
+            return(
+                <button
+                    className='commentButton'
+                    onClick={() => decrementer()}
+                    >Show less
+                </button>  
+            )
+        } 
     }
 
     // Rendering comments handler function
@@ -87,7 +128,7 @@ export const Post = ({post, onToggleComment}) => {
         }
     
         if (post.loadingComments) {
-          return <CommentSkeleton cards={5} />
+          return <CommentSkeleton cards={2} />
         }
     
         if (post.showingComments) {
@@ -97,10 +138,8 @@ export const Post = ({post, onToggleComment}) => {
               {post.comments.map((comment, index) => index < numComm && (
                 <Comments comment={comment} key={comment.id} />
               ))}
-              <button
-                className='commentButton'
-                onClick={() => incrementer()}
-                >Load more...</button>
+             
+             {renderMoreComments()}
             </div>
           );
         }
@@ -132,7 +171,8 @@ export const Post = ({post, onToggleComment}) => {
                     <span className="time">{moment.unix(post.created_utc).fromNow()}</span>
                         <button
                          className="comments"
-                         onClick={() => {onToggleComment(post.permalink)}}>
+                         onClick={() => {onToggleComment(post.permalink)}}
+                         >
                         <BiCommentDetail className="commentIcon"/>
                         <p>{post.num_comments}</p>
                         </button>  
