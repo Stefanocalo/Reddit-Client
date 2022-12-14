@@ -18,6 +18,12 @@ export const Header = () => {
 
     const dispatch = useDispatch();
 
+    const hamburgher = document.querySelector('.hamburgherMenu');
+    const subReddit = document.querySelector('aside');
+    const header = document.querySelector('header');
+    const main = document. querySelector('main');
+    const search = document.querySelector('.searchBar');
+
     // Updating local search input state
     const handleSearchInputChange = ({target}) => {
         setSearchInput(target.value);
@@ -31,25 +37,22 @@ export const Header = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         dispatch(setSearchTerm(searchInput))
+
+        hamburgher.classList.remove('active');
+        subReddit.classList.remove('active');
+        header.classList.remove('active');
+        main.classList.remove('active');
+        search.classList.remove('active');
     }
 
     //Handle hamburgher menu click
 
     const onHamburgherClick = () => {
-        const hamburgher = document.querySelector('.hamburgherMenu');
-        const subReddit = document.querySelector('aside');
-        const header = document.querySelector('header');
-        const main = document. querySelector('main');
-        const search = document.querySelector('.searchBar');
-
-        
         hamburgher.classList.toggle('active');
         subReddit.classList.toggle('active');
         header.classList.toggle('active');
         main.classList.toggle('active');
         search.classList.toggle('active');
-
-       
     }
 
     
