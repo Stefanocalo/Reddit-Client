@@ -17,6 +17,7 @@ export const SubReddits = () => {
     const subreddits = useSelector(selectSubReddits);  
     
     const sub = useSelector((state) => state.subreddit);
+    const isLightMode = useSelector((state) => state.reddit.isLightMode);
     const {isLoading, error} = sub;
 
 
@@ -28,18 +29,21 @@ export const SubReddits = () => {
         dispatch(setSelectedSubreddit(url))
         window.scrollTo({ top:0})
 
-        const hamburgher = document.querySelector('.hamburgherMenu');
-        const subReddit = document.querySelector('aside');
-        const header = document.querySelector('header');
-        const main = document. querySelector('main');
-        const search = document.querySelector('.searchBar');
-
-        
-        hamburgher.classList.remove('active');
-        subReddit.classList.remove('active');
-        header.classList.remove('active');
-        main.classList.remove('active');
-        search.classList.remove('active');
+        if(isLightMode === true) {
+            document.querySelector('.hamburgherMenu').classList.remove('active');
+            document.querySelector('aside').classList.remove('active');
+            document.querySelector('.headerLight').classList.remove('active');
+            document. querySelector('main').classList.remove('active');
+            document.querySelector('.searchBarLight').classList.remove('active');
+            document.querySelector('.lightButton').classList.remove('active');
+        } else if(isLightMode === false) {
+            document.querySelector('.hamburgherMenu').classList.remove('active');
+            document.querySelector('aside').classList.remove('active');
+            document.querySelector('.headerDark').classList.remove('active');
+            document. querySelector('main').classList.remove('active');
+            document.querySelector('.searchBarDark').classList.remove('active');
+            document.querySelector('.darkButton').classList.remove('active');
+        }
 
        
     }
@@ -60,7 +64,7 @@ export const SubReddits = () => {
     }
 
     return (
-        <div className="subredditsSection">
+        <div className={isLightMode ? "subredditsSection" : "subredditSectionDark"}>
             <h2 id='top'>Subreddits</h2>
             {isLoading && <SubredditSkeleton cards={(25)} />}
             <ul className="subredditList">

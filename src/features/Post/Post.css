@@ -20,7 +20,7 @@
 }
 
 button {
-    background-color: rgb(250, 250, 250);
+    background: none;
 }
 
 .down:hover {
@@ -132,7 +132,7 @@ img {
     align-items: center;
     font-size: 2rem;
     cursor: pointer;
-    background-color:  rgb(250, 250, 250);
+    background:  none;
     transition: 0.3s;
     border-radius: 8px;
 }
@@ -147,7 +147,7 @@ img {
 }
 
 .commentButton {
-    transition: 0.2s;
+    transition: 0.3s;
     border-radius: 10px;
     background-color: rgb(84, 99, 186);
     color: rgb(250, 250, 250);
@@ -189,6 +189,106 @@ img {
 .errorMessage {
     font-size: 1.3rem;
     padding-bottom: 2rem;
+}
+
+/*  Dark Mode  */
+
+.postContainerDark {
+    width: 90%;
+    height: auto;
+    border: 1px solid rgba(240, 240, 240, 0.2);
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    display: flex;background-color: rgb(0, 0, 0);
+    color: rgb(250, 250, 250);
+    transition: 0.3s;
+}
+
+.upDark,
+.downDark {
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s;
+    color: rgb(250, 250 , 250);
+}
+
+.upDark:hover {
+    color:  rgb(44, 213, 92);
+    background-color: rgb(74, 73, 73);
+}
+
+.downDark:hover {
+    
+    color:  rgb(248, 23, 64);
+    background-color: rgb(74, 73, 73);
+}
+
+.upActiveDark {
+    font-size: 2rem;
+    cursor: pointer;
+    color:  rgb(44, 213, 92);
+}
+
+.downActiveDark {
+    font-size: 2rem;
+    cursor: pointer;
+    color:  rgb(248, 23, 64);
+}
+
+.upActiveDark:hover {
+    font-size: 2rem;
+    cursor: pointer;
+    color:  rgb(44, 213, 92);
+    background-color: rgb(60, 150, 35);
+    border-radius: 50%;
+}
+
+.upVote {
+    color:  rgb(44, 213, 92);
+    font-weight: 700;
+
+}
+
+.downVote {
+    font-weight: 700;
+    color:  rgb(248, 23, 64);
+}
+
+.downActiveDark:hover {
+    font-size: 2rem;
+    cursor: pointer;
+    color:  rgb(248, 23, 64);
+    background-color: rgb(134, 42, 42);
+    border-radius: 50%;
+}
+
+.commentsDark {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    background:  none;
+    transition: 0.3s;
+    border-radius: 8px;
+    color: rgb(250, 250, 250);
+}
+
+.commentsDark:hover {
+    background-color: rgb(88, 88, 88);
+}
+
+.commentButton {
+    transition: 0.3s;
+    border-radius: 10px;
+    background-color: rgb(84, 99, 186);
+    color: rgb(250, 250, 250);
+    display: flex;
+    padding: 0.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0 3rem;
 }
 
 @media only screen and (max-width: 600px) {

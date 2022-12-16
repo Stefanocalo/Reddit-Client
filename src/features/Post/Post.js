@@ -6,12 +6,15 @@ import moment from 'moment';
 import { Comments } from "../Comments/Comments";
 import { CommentSkeleton } from "../Comments/CommentSkeleton";
 import { numShortener } from "../../utils/numShortener";
+import { useSelector } from "react-redux";
 
 
 export const Post = ({post, onToggleComment}) => {
 
     const [vote, setVote] = useState(0);
     const [numComm, setNumComm] = useState(3)
+
+    const isLightMode = useSelector((state) => state.reddit.isLightMode);
 
     const generateImage = (url) => {
         if(url) {
@@ -38,18 +41,41 @@ export const Post = ({post, onToggleComment}) => {
     };
 
     const renderArrowUp = (vote) => {
-        if (vote > 0) {
-            return  <TbArrowBigTop className="upActive" />
-        } else {
-            return  <TbArrowBigTop className="up" />
+
+        if(isLightMode === true) {
+            if (vote > 0) {
+                return  <TbArrowBigTop className="upActive" />
+            } else {
+                return  <TbArrowBigTop className="up" />
+            }
         }
+
+        if(isLightMode === false) {
+            if (vote > 0) {
+                return  <TbArrowBigTop className="upActiveDark" />
+            } else {
+                return  <TbArrowBigTop className="upDark" />
+            }
+        }
+
+
     };
 
     const renderArrowDown = (vote) => {
-        if (vote < 0) {
-            return  <TbArrowBigDown className="downActive"/>
-        } else {
-            return  <TbArrowBigDown className="down"/>
+        if(isLightMode === true) {
+            if (vote < 0) {
+                return  <TbArrowBigDown className="downActive"/>
+            } else {
+                return  <TbArrowBigDown className="down"/>
+            }
+        }
+
+        if(isLightMode === false) {
+            if (vote < 0) {
+                return  <TbArrowBigDown className="downActiveDark"/>
+            } else {
+                return  <TbArrowBigDown className="downDark"/>
+            }
         }
     }
 
@@ -143,7 +169,7 @@ export const Post = ({post, onToggleComment}) => {
 
     return (
         <div className="main">
-        <div className="postContainer" key={post.id}>
+        <div className={isLightMode ? "postContainer" : "postContainerDark"} key={post.id}>
             <div className="upsContainer">
                 <button onClick={() => handleVoteUP(1)}>
                     {renderArrowUp(vote)}
@@ -164,7 +190,7 @@ export const Post = ({post, onToggleComment}) => {
                     <span className="author">{post.author}</span>
                     <span className="time">{moment.unix(post.created_utc).fromNow()}</span>
                         <button
-                         className="comments"
+                         className={isLightMode ? 'comments' : 'commentsDark'}
                          onClick={() => {onToggleComment(post.permalink)}}
                          >
                         <BiCommentDetail className="commentIcon"/>

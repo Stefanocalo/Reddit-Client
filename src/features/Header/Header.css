@@ -1,4 +1,8 @@
-header {
+*{
+    transition: 0.3s;
+}
+
+.headerLight {
     display: flex;
     align-items: center;
     justify-content:space-between;
@@ -10,7 +14,6 @@ header {
     box-shadow: 0px 10px 19px 0px rgba(0,0,0,0.56);
     background-color: rgb(250, 250, 250);
     z-index: 100;
-    transition: 0.3s;
 }
 
 .hamburgherMenu {
@@ -18,12 +21,13 @@ header {
 }
 
 .logo,
-.searchBar {
+.searchBarLight {
     display: flex;
     align-items: center;
 }
 
-input {
+
+.inputLight {
     height: 1.5rem;
     border-radius: 8px;
     margin: 0 0.3rem;
@@ -57,22 +61,98 @@ input {
     color:  rgb(72, 72, 72);
 }
 
-.searchBar button {
+.searchBarLight button {
     background-color: rgb(250, 250, 250);
 }
 
+.lightButton {
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+/*  Dark Mode  */
+
+.headerDark {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    position: fixed;
+    top: 0;
+    height: 4rem;
+    width: 90%;
+    padding: 0 5%;
+    box-shadow: 0px 10px 19px 0px rgba(0,0,0,0.56);
+    background-color: rgb(0, 0, 0);
+    z-index: 100;
+    border-bottom: 1px solid rgba(240, 240, 240, 0.2);
+}
+
+.searchBarDark {
+    display: flex;
+    align-items: center;
+}
+
+.inputDark {
+    height: 1.5rem;
+    border-radius: 8px;
+    margin: 0 0.3rem;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    width: 15rem;
+    background-color: rgba(229, 217, 217, 0.2);
+    color: rgb(250, 250, 250);
+}
+
+.logo-iconDark {
+    width: auto;
+    height: 1.8rem;
+    color:  rgb(110, 118, 177);
+}
+
+.search-iconDark {
+    width: auto;
+    height: 1.6rem;
+    cursor: pointer;
+    color:  rgb(209, 206, 206);
+}
+
+.redditDark {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color:  rgb(110, 118, 177);
+}
+
+.liteDark {
+    font-size: 1.2rem;
+    color:  rgb(209, 206, 206);
+}
+
+.searchBarDark button {
+    background-color: rgb(0, 0, 0);
+}
+
+.darkButton {
+    transform: rotate(180deg);
+    font-size: 1.6rem;
+    cursor: pointer;
+    color:  rgb(209, 206, 206);
+}
+
+
 @media only screen and (max-width: 600px) {
 
-    header {
+    .headerLight,
+    .headerDark {
         justify-content: center;
     }
 
-    header.active {
+    .headerLight.active,
+    .headerDark.active {
         box-shadow: none;
     }
 
-    input {
-        
+    .inputLight,
+    .inputDark {
         height: 1.5rem;
         margin: 0;
         padding: 0.5rem 1rem;
@@ -80,19 +160,19 @@ input {
         background-color: rgba(114, 114, 114, 0.2);
     }
 
-    .searchBar {
+    .searchBarLight {
         position: fixed;
         top: 4rem;
         left: -100%;
         width: 100%;
-        background-color: rgb(250, 250, 250);
         padding: 1rem 0;
         justify-content: center;
-        transition: 0.2s ease-out;
     }
 
-    .searchBar.active {
+    .searchBarLight.active,
+    .searchBarDark.active {
         left: 0;
+        border-bottom: none;
     }
     
 
@@ -119,7 +199,31 @@ input {
         background-color: rgb(114, 114, 114);
         border-radius: 10px;
         margin: 0.3rem 0;
-        transition: 0.3s;
+    }
+
+    .darkButton,
+    .lightButton {
+        display: block;
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
+        font-size: 2rem;
+        opacity: 1;
+    }
+
+    .darkButton.active,
+    .lightButton.active {
+        opacity: 0;
+    }
+
+    .searchBarDark {
+        position: fixed;
+        top: 4rem;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 0;
+        justify-content: center;
+        background-color: rgb(0, 0, 0);
     }
 }
 

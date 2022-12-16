@@ -7,7 +7,8 @@ const initialState = {
     isLoading: false,
     error: false,
     searchTerm: '',
-    selectedSubReddits: '/r/Home'
+    selectedSubReddits: '/r/Home',
+    isLightMode: true
 };
 
 const redditSlice = createSlice({
@@ -59,6 +60,10 @@ const redditSlice = createSlice({
         getCommentsFail: (state, action) => {
             state.posts[action.payload].loadingComments = false;
             state.posts[action.payload].error = true;
+        },
+        toggleDarkMode: (state, action) => {
+            state.isLightMode = action.payload;
+            
         }
     }
 })
@@ -73,7 +78,8 @@ export const {
     toggleShowingComments,
     startGetComments,
     getCommentSuccess,
-    getCommentsFail
+    getCommentsFail,
+    toggleDarkMode
 } = redditSlice.actions;
 
 export default redditSlice.reducer;
