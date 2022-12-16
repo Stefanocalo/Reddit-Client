@@ -8,6 +8,8 @@ import { Feed } from './features/Feed/Feed';
 import { SkeletonTheme } from 'react-loading-skeleton'
 
 import {ScrollButton} from './features/scrollButton/ScrollButton';
+import { CommentSkeleton } from './features/Comments/CommentSkeleton';
+import { PostSkeleton } from './features/Post/PostSkeleton';
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
     <SkeletonTheme baseColor={isLightMode ? "#ccc8c8" : "#53504F"} highlightColor={isLightMode ? "#e8e6e6" : "#646464"}>
     <Header />
     <main className={isLightMode ? null : 'mainDark'}>
-    <Feed />
+      <Feed />
     </main>
     <aside className={isLightMode ? null : 'asideDark'} >
       <SubReddits />

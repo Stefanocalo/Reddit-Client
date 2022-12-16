@@ -1,5 +1,5 @@
 
-.commentWrapper {
+.skeletonWrapper {
     width: 70%;
     height: auto;
     display: block;
@@ -7,6 +7,19 @@
     border-radius: 15px;
     transition: 0.3s;
     margin: 0.7rem 0;
+    background-color: rgb(230 , 230, 230);
+}
+
+
+.skeletonWrapperDark {
+    width: 70%;
+    height: auto;
+    display: block;
+    padding: 1.5rem;
+    border-radius: 15px;
+    transition: 0.3s;
+    margin: 0.7rem 0;
+    background-color: #323232;
 }
 
 .inline {
