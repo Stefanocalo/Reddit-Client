@@ -16,7 +16,7 @@ export const Comments = ({comment, id}) => {
                 <p className="commentBody">{comment.body}</p>
             </div>
             {comment.replies && comment.replies.data.children.map((reply) => (
-                <div className={isLightMode ? "replyContainer" : "replyContainerDark"} key={reply.data.id}>
+                <div className="replyContainer" key={reply.data.id}>
                     <div className={isLightMode ? "replyWrapper" : "replyWrapperDark"}>
                         <div className="authorContainer">
                             <span className="author"> {reply.data.author} </span>

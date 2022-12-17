@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(0, 0, 0, 0.6);
 }
 
 #root {
@@ -45,9 +44,6 @@ aside {
   }
 
   main.active {
-    position: absolute;
-    animation: disappear 1s 0.5s;
-    opacity: 0;
     display: none;
   }
   aside {
@@ -66,18 +62,6 @@ aside {
 }
 
 
-/* Feed animation */
 
-@keyframes disappear {
-  0% {
-      opacity: 1;
-  }
-  60% {
-      opacity: 0;
-  }
-  100% {
-      display: none;
-  }
-}
 
 
