@@ -20,14 +20,14 @@ function App() {
   return (
     <>
     <SkeletonTheme baseColor={isLightMode ? "#ccc8c8" : "#53504F"} highlightColor={isLightMode ? "#e8e6e6" : "#646464"}>
-    <Header />
-    <main className={isLightMode ? null : 'mainDark'}>
-      <Feed />
-    </main>
-    <aside className={isLightMode ? null : 'asideDark'} >
-      <SubReddits />
-    </aside>
-    < ScrollButton />
+      <Header />
+      <main className={isLightMode ? null : 'mainDark'}>
+        <Feed />
+      </main>
+      <aside className={isLightMode ? null : 'asideDark'} >
+        <SubReddits />
+      </aside>
+      < ScrollButton />
     </SkeletonTheme >
     </>
   )

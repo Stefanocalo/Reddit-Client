@@ -55,8 +55,6 @@ export const Header = () => {
             document. querySelector('main').classList.remove('active');
             document.querySelector('.searchBarDark').classList.remove('active');
             document.querySelector('.darkButton').classList.remove('active');
-
-
         }
     }
 
@@ -70,6 +68,7 @@ export const Header = () => {
             document. querySelector('main').classList.toggle('active');
             document.querySelector('.searchBarLight').classList.toggle('active');
             document.querySelector('.lightButton').classList.toggle('active');
+            document.querySelector('.theme').classList.remove('active')
         } else if(isLightMode === false) {
             document.querySelector('.hamburgherMenu').classList.toggle('active');
             document.querySelector('aside').classList.toggle('active');
@@ -77,6 +76,7 @@ export const Header = () => {
             document. querySelector('main').classList.toggle('active');
             document.querySelector('.searchBarDark').classList.toggle('active');
             document.querySelector('.darkButton').classList.toggle('active');
+            document.querySelector('.theme').classList.toggle('active')
         }
     }
 
