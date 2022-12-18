@@ -54,6 +54,7 @@ aside {
   main.active {
     display: none;
   }
+
   aside {
     position: absolute;
     top: 4rem;
