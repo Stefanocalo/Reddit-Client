@@ -68,7 +68,6 @@ export const Header = () => {
             document. querySelector('main').classList.toggle('active');
             document.querySelector('.searchBarLight').classList.toggle('active');
             document.querySelector('.lightButton').classList.toggle('active');
-            document.querySelector('.theme').classList.remove('active')
         } else if(isLightMode === false) {
             document.querySelector('.hamburgherMenu').classList.toggle('active');
             document.querySelector('aside').classList.toggle('active');
@@ -76,7 +75,6 @@ export const Header = () => {
             document. querySelector('main').classList.toggle('active');
             document.querySelector('.searchBarDark').classList.toggle('active');
             document.querySelector('.darkButton').classList.toggle('active');
-            document.querySelector('.theme').classList.toggle('active')
         }
     }
 
@@ -116,7 +114,10 @@ export const Header = () => {
             <div className='darkMode'>
                 <CgDarkMode 
                 className={isLightMode ? 'lightButton' : 'darkButton'}
-                onClick={() => dispatch(toggleDarkMode(actual()))}
+                onClick={() => {
+                    dispatch(toggleDarkMode(actual()))
+                    document.querySelector('.theme').classList.toggle('active')
+                }}
                 />
             </div>
 
