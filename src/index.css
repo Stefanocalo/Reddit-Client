@@ -9,7 +9,7 @@ body {
 
 .theme {
   background-color: rgb(250, 250, 250);
-  transition: none;
+  transition: 0.3s;
 }
 
 .theme.active {
