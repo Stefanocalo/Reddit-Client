@@ -32,9 +32,6 @@ export const Feed = () => {
 
     // Error Handling
 
-
-    
-
     if(error) {
         return(
             <div className="error">

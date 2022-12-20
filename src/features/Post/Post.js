@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
 import {BiCommentDetail, BiErrorCircle} from 'react-icons/bi';
+import {AiFillCloseCircle} from 'react-icons/ai'
 import moment from 'moment';
 import { Comments } from "../Comments/Comments";
 import { CommentSkeleton } from "../Comments/CommentSkeleton";
@@ -12,14 +13,29 @@ import { useSelector } from "react-redux";
 export const Post = ({post, onToggleComment}) => {
 
     const [vote, setVote] = useState(0);
-    const [numComm, setNumComm] = useState(3)
+    const [numComm, setNumComm] = useState(3);
+    const [expand, setExpand] = useState(false);
 
     const isLightMode = useSelector((state) => state.reddit.isLightMode);
 
     const generateImage = (url) => {
         if(url) {
-            return( <img src={url} alt=""/>)
+            return( 
+                    <div className={expand ? "expandImgContainer" : null}>
+                        <div
+                        onClick={() => expandImage()} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} /></div>
+                        <img 
+                        src={url} 
+                        alt="" 
+                        className={expand ? 'expandPostImage' : 'postImage'}
+                        onClick={() => expandImage()}
+                        />
+                    </div>)
         }
+    }
+
+    const expandImage = () => {
+        setExpand(!expand);
     }
 
     // Ups arrows rendering handler funcitons
