@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
-import {BiCommentDetail, BiErrorCircle} from 'react-icons/bi';
+import {BiCommentDetail, BiErrorCircle, BiArrowBack} from 'react-icons/bi';
 import {AiFillCloseCircle} from 'react-icons/ai'
 import moment from 'moment';
 import { Comments } from "../Comments/Comments";
@@ -15,6 +15,7 @@ export const Post = ({post, onToggleComment}) => {
     const [vote, setVote] = useState(0);
     const [numComm, setNumComm] = useState(3);
     const [expand, setExpand] = useState(false);
+    const [expandPost, setExpandPost] = useState(false);
 
     const isLightMode = useSelector((state) => state.reddit.isLightMode);
 
@@ -36,11 +37,12 @@ export const Post = ({post, onToggleComment}) => {
 
     
     useEffect(() => {
-        let overflow = expand ? 'hidden' : 'auto';
+        let overflow = expand || expandPost ? 'hidden' : 'auto';
+
 
         document.body.style.overflow = overflow;
 
-    }, [expand]);
+    }, [expand, expandPost]);
 
     const expandImage = () => {
 
@@ -195,41 +197,54 @@ export const Post = ({post, onToggleComment}) => {
         return null;
     };
 
+    // Expand Card 
+
+    const postDetail = () => {
+       setExpandPost(!expandPost);
+       renderComments()
+    }
+
     return (
-        <div className="main">
-        <div className={isLightMode ? "postContainer" : "postContainerDark"} key={post.id}>
-            <div className="upsContainer">
-                <button onClick={() => handleVoteUP(1)}>
-                    {renderArrowUp(vote)}
-                </button>
-                {renderUps(vote)}
-                <button onClick={() => handleVoteDOWN(-1)}>
-                    {renderArrowDown(vote)}
-                </button>
+        <div className={expandPost ? "mainExpand" : "main"}>
+            <div>
+                <BiArrowBack className={ expandPost ? 'back' : 'none' } />
             </div>
-            <div className="main">
-                <div className="titleContainer">
-                    <h3>{post.title}</h3>
+            <div className={isLightMode ? "postContainer" : "postContainerDark"} key={post.id}>
+                <div className="upsContainer">
+                    <button onClick={() => handleVoteUP(1)}>
+                        {renderArrowUp(vote)}
+                    </button>
+                    {renderUps(vote)}
+                    <button onClick={() => handleVoteDOWN(-1)}>
+                        {renderArrowDown(vote)}
+                    </button>
                 </div>
-                <div className="imageContainer">
-                    {generateImage(post.url)}
+                <div className="main">
+                    <div 
+                    className="titleContainer"
+                    onClick={() => postDetail()}
+                    >
+                        <h3>{post.title}</h3>
+                    </div>
+                    <div className="imageContainer">
+                        {generateImage(post.url)}
+                    </div>
+                    <div className="detailsContainer">
+                        <span className="author">{post.author}</span>
+                        <span className="time">{moment.unix(post.created_utc).fromNow()}</span>
+                            <button
+                            className={isLightMode ? 'comments' : 'commentsDark'}
+                            onClick={() => {onToggleComment(post.permalink)}}
+                            >
+                            <BiCommentDetail className="commentIcon"/>
+                            <p>{post.num_comments}</p>
+                            </button>  
+                    </div>     
+                </div>   
+                </div> 
+                <div className={isLightMode ? "commentsSection" : "commentSectionDark"}>
+                    {renderComments()}
                 </div>
-                <div className="detailsContainer">
-                    <span className="author">{post.author}</span>
-                    <span className="time">{moment.unix(post.created_utc).fromNow()}</span>
-                        <button
-                         className={isLightMode ? 'comments' : 'commentsDark'}
-                         onClick={() => {onToggleComment(post.permalink)}}
-                         >
-                        <BiCommentDetail className="commentIcon"/>
-                        <p>{post.num_comments}</p>
-                        </button>  
-                </div>     
-            </div>   
-            </div> 
-            <div className="commentsSection">
-                 {renderComments()}
-            </div>
         </div>
 )
 }
