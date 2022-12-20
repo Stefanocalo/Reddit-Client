@@ -120,11 +120,17 @@ button {
 }
 
 .expandPostImage {
-    height: auto;
-    width: 100vw;
+    height: 90vh;
+    width: auto;
     z-index: 101;
-    position: fixed;
-    left: 0;
+}
+
+.imgContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .expandImgContainer {
@@ -134,8 +140,7 @@ button {
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    align-items: center;
+    
     z-index: 100;
 }
 
@@ -351,5 +356,10 @@ button {
         font-size: 0.8rem;
         padding: 0.4rem 2rem;
         margin: 0;
+    }
+
+    .expandPostImage {
+        width: 100vw;
+        height: auto;
     }
 }

@@ -24,12 +24,14 @@ export const Post = ({post, onToggleComment}) => {
                     <div className={expand ? "expandImgContainer" : null}>
                         <div
                         onClick={() => expandImage()} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} /></div>
+                        <div className={expand ? "imgContainer" : "null"}>
                         <img 
                         src={url} 
                         alt="" 
                         className={expand ? 'expandPostImage' : 'postImage'}
                         onClick={() => expandImage()}
                         />
+                         </div>
                     </div>)
         }
     }
