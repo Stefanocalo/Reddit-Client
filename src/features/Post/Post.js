@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
 import {BiCommentDetail, BiErrorCircle} from 'react-icons/bi';
@@ -34,7 +34,16 @@ export const Post = ({post, onToggleComment}) => {
         }
     }
 
+    
+    useEffect(() => {
+        let overflow = expand ? 'hidden' : 'auto';
+
+        document.body.style.overflow = overflow;
+
+    }, [expand]);
+
     const expandImage = () => {
+
         setExpand(!expand);
     }
 
@@ -149,6 +158,9 @@ export const Post = ({post, onToggleComment}) => {
             )
         } 
     }
+
+
+    
 
     // Rendering comments handler function
 
