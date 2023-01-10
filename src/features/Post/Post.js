@@ -22,7 +22,6 @@ export const Post = ({post, onToggleComment}) => {
     const handlers = useSwipeable({
         onSwiped: (eventData) => setExpand(false),
         delta: 10,
-        preventScrollOnSwipe: true,
         trackMouse: true,
     })
     
