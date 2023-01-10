@@ -58,6 +58,8 @@ export const Header = () => {
         }
     }
 
+
+
     //Handle hamburgher menu click
 
     const onHamburgherClick = () => {

@@ -1,5 +1,7 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSwipeable } from "react-swipeable";
+
 import { fetchSubReddits } from "../../store/subRedditSlice";
 import { selectSelectedSubReddits, setSelectedSubreddit } from "../../store/redditSlice";
 import { selectSubReddits } from "../../store/subRedditSlice";
@@ -48,6 +50,26 @@ export const SubReddits = () => {
        
     }
 
+    const handlers = useSwipeable({
+        onSwipedLeft: (eventData) => {
+            if(isLightMode === true) {
+                document.querySelector('.hamburgherMenu').classList.remove('active');
+                document.querySelector('aside').classList.remove('active');
+                document.querySelector('.headerLight').classList.remove('active');
+                document. querySelector('main').classList.remove('active');
+                document.querySelector('.searchBarLight').classList.remove('active');
+                document.querySelector('.lightButton').classList.remove('active');
+            } else if(isLightMode === false) {
+                document.querySelector('.hamburgherMenu').classList.remove('active');
+                document.querySelector('aside').classList.remove('active');
+                document.querySelector('.headerDark').classList.remove('active');
+                document. querySelector('main').classList.remove('active');
+                document.querySelector('.searchBarDark').classList.remove('active');
+                document.querySelector('.darkButton').classList.remove('active');
+            }
+        }
+    })
+
     
     if(error) {
         return(
@@ -63,8 +85,11 @@ export const SubReddits = () => {
         )
     }
 
+
     return (
-        <div className={isLightMode ? "subredditsSection" : "subredditSectionDark"}>
+        <div 
+        {...handlers}
+        className={isLightMode ? "subredditsSection" : "subredditSectionDark"}>
             <h2 id='top'>Subreddits</h2>
             {isLoading && <SubredditSkeleton cards={(25)} />}
             <ul className="subredditList">
