@@ -8,6 +8,7 @@ import { Comments } from "../Comments/Comments";
 import { CommentSkeleton } from "../Comments/CommentSkeleton";
 import { numShortener } from "../../utils/numShortener";
 import { useSelector } from "react-redux";
+import { useSwipeable } from "react-swipeable";
 
 
 export const Post = ({post, onToggleComment}) => {
@@ -18,12 +19,22 @@ export const Post = ({post, onToggleComment}) => {
 
     const isLightMode = useSelector((state) => state.reddit.isLightMode);
 
+    const handlers = useSwipeable({
+        onSwiped: (eventData) => setExpand(false),
+        delta: 10,
+        preventScrollOnSwipe: true,
+        trackMouse: true,
+    })
+    
+
     const generateImage = (url) => {
         if(url) {
             return( 
-                    <div className={expand ? "expandImgContainer" : null}>
+                    <div 
+                    {...handlers}
+                    className={expand ? "expandImgContainer" : null}>
                         <div
-                        onClick={() => expandImage()} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} /></div>
+                        onClick={() => setExpand(false)} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} /></div>
                         <div className={expand ? "imgContainer" : "null"}>
                         <img 
                         src={url} 
@@ -46,7 +57,7 @@ export const Post = ({post, onToggleComment}) => {
 
     const expandImage = () => {
 
-        setExpand(!expand);
+        !expand && setExpand(!expand);
     }
 
     // Ups arrows rendering handler funcitons
