@@ -39,14 +39,52 @@ export const Post = ({post, onToggleComment}) => {
                         src={url} 
                         alt="" 
                         className={expand ? 'expandPostImage' : 'postImage'}
-                        onClick={() => expandImage()}
+                        onClick={() => setExpand(!expand)}
                         />
                          </div>
                     </div>)
         }
     }
 
-    
+    const replaceString = (url) => {
+        return url.replace(/&amp;/g, '&');
+    }
+
+    const generateGallery = (post) => {
+      
+        let urls = [];
+        post.gallery_data.items.map(element => {
+        let imgUrl = post.media_metadata[element.media_id].s.u;
+        urls.push(imgUrl);
+      })
+
+      console.log(urls);
+
+     
+
+      if(urls.length > 1) {
+        return (
+            <div 
+            {...handlers}
+            className={expand ? "expandImgContainer" : null}>
+                <div
+                onClick={() => setExpand(false)} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} />
+                </div>
+                <div className={expand ? "imgContainer" : "null"}>
+                {urls.map((url, index) => (
+                <img
+                key={index}
+                src={replaceString(url)}
+                className={expand ? 'expandPostImage' : 'postImage'}
+                onClick={() => setExpand(!expand)}
+                />
+                ))}
+                    </div>
+            </div>
+          )
+      }
+    }
+   
     useEffect(() => {
         let overflow = expand ? 'hidden' : 'auto';
 
@@ -54,10 +92,6 @@ export const Post = ({post, onToggleComment}) => {
 
     }, [expand]);
 
-    const expandImage = () => {
-
-        !expand && setExpand(!expand);
-    }
 
     // Ups arrows rendering handler funcitons
 
@@ -223,9 +257,12 @@ export const Post = ({post, onToggleComment}) => {
                 <div className="titleContainer">
                     <h3>{post.title}</h3>
                 </div>
-                <div className="imageContainer">
+                {post.url && <div className="imageContainer">
                     {generateImage(post.url)}
-                </div>
+                </div>}
+                {post.is_gallery === true && <div className="imageContainer">
+                    {generateGallery(post)}
+                    </div>}
                 <div className="detailsContainer">
                     <span className="author">{post.author}</span>
                     <span className="time">{moment.unix(post.created_utc).fromNow()}</span>

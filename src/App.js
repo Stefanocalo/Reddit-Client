@@ -21,7 +21,7 @@ function App() {
     <>
     <SkeletonTheme baseColor={isLightMode ? "#ccc8c8" : "#53504F"} highlightColor={isLightMode ? "#e8e6e6" : "#646464"}>
       <Header />
-      <main className={isLightMode ? null : 'mainDark'}>
+      <main className={isLightMode ? 'main' : 'mainDark'}>
         <Feed />
       </main>
       <aside className={isLightMode ? null : 'asideDark'} >
