@@ -18,6 +18,7 @@ export const Post = ({post, onToggleComment}) => {
     const [vote, setVote] = useState(0);
     const [numComm, setNumComm] = useState(3);
     const [expand, setExpand] = useState(false);
+    const [isShortened, setIsShortened] = useState(false);
 
     const isLightMode = useSelector((state) => state.reddit.isLightMode);
 
@@ -179,6 +180,36 @@ export const Post = ({post, onToggleComment}) => {
         return null;
     };
 
+
+    //Shortening text
+    const linkDetectionRegex = /(([a-z]+:\/\/)?(([a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel|local|internal))(:[0-9]{1,5})?(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&amp;]*)?)?(#[a-zA-Z0-9!$&'()*+.=-_~:@/?]*)?)(\s+|$)/gi
+
+    function linkSwapper(text) {
+        var urlRegex = /(https?:\/\/[^\s]+)/g;
+        return text.replace(urlRegex, 'link')
+    }
+    
+    const text = linkSwapper(post.selftext);
+
+    useEffect(() => {
+        if (post.selftext.split(" ").length > 40) {
+            setIsShortened(true);
+        }
+    },[post])
+
+    const wordShortener = (str) => { 
+        if(isShortened) {
+            let shortened = str.slice(0,300);
+           return shortened + '...'
+        } else {
+            return text
+        }
+           
+        
+      }
+
+      
+
     return (
         <div className="main">
         <div className={isLightMode ? "postContainer" : "postContainerDark"} key={post.id}>
@@ -195,7 +226,11 @@ export const Post = ({post, onToggleComment}) => {
                 <div className="titleContainer">
                     <h3>{post.title}</h3>
                 </div>
-                {post.url && 
+                {post.selftext && 
+                    <div>
+                        <p className="postText">{wordShortener(text)}</p>
+                    </div>}
+                {(!post.is_gallery && !post.selftext && post.link_flair_type !== 'text' && post.url) && 
                     <div className="imageContainer">
                         <Image url={post.url} />
                     </div>

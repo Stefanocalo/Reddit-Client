@@ -140,6 +140,10 @@ button {
     justify-content: center;
 }
 
+.postText {
+    margin: 1rem 0;
+}
+
 .postGalleryImage {
     width: 28%;
     height: auto;

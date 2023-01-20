@@ -20,7 +20,7 @@ export const Image = ({url}) => {
 
 
     const handlers = useSwipeable({
-        onSwiped: (eventData) => setExpand(false),
+        onSwiped: () => setExpand(false),
         delta: 10,
         trackMouse: true,
     });

@@ -51,7 +51,6 @@ export const Gallery = ({post}) => {
     }
 
 
-console.log(value);
     return(
         <div className="galleryWrapper">
             <div 
@@ -64,7 +63,7 @@ console.log(value);
                 { post.gallery_data.items.map((element, index) => {
                     const originalUrl = post.media_metadata[element.media_id].s;
                     const url = replaceString(originalUrl.u);
-                   return(<GalleryImage url={url} index={index} expand={expand} setExpand={setExpand} value={value} setValue={setValue}/>)
+                   return(<GalleryImage url={url} key={index} index={index} expand={expand} setExpand={setExpand} value={value} setValue={setValue}/>)
                 })}  
                 </div>
             </div>
