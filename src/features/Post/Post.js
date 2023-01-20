@@ -2,13 +2,15 @@ import React, {useEffect, useState} from "react";
 import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
 import {BiCommentDetail, BiErrorCircle} from 'react-icons/bi';
-import {AiFillCloseCircle} from 'react-icons/ai'
 import moment from 'moment';
 import { Comments } from "../Comments/Comments";
 import { CommentSkeleton } from "../Comments/CommentSkeleton";
 import { numShortener } from "../../utils/numShortener";
 import { useSelector } from "react-redux";
-import { useSwipeable } from "react-swipeable";
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
+import { Image } from "../Gallery/Image";
+
 
 
 export const Post = ({post, onToggleComment}) => {
@@ -19,71 +21,7 @@ export const Post = ({post, onToggleComment}) => {
 
     const isLightMode = useSelector((state) => state.reddit.isLightMode);
 
-    const handlers = useSwipeable({
-        onSwiped: (eventData) => setExpand(false),
-        delta: 10,
-        trackMouse: true,
-    })
-    
 
-    const generateImage = (url) => {
-        if(url) {
-            return( 
-                    <div 
-                    {...handlers}
-                    className={expand ? "expandImgContainer" : null}>
-                        <div
-                        onClick={() => setExpand(false)} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} /></div>
-                        <div className={expand ? "imgContainer" : "null"}>
-                        <img 
-                        src={url} 
-                        alt="" 
-                        className={expand ? 'expandPostImage' : 'postImage'}
-                        onClick={() => setExpand(!expand)}
-                        />
-                         </div>
-                    </div>)
-        }
-    }
-
-    const replaceString = (url) => {
-        return url.replace(/&amp;/g, '&');
-    }
-
-    const generateGallery = (post) => {
-      
-        let urls = [];
-        post.gallery_data.items.map(element => {
-        let imgUrl = post.media_metadata[element.media_id].s.u;
-        urls.push(imgUrl);
-      })
-
-      console.log(urls);
-
-     
-
-      if(urls.length > 1) {
-        return (
-            <div 
-            {...handlers}
-            className={expand ? "expandImgContainer" : null}>
-                <div
-                onClick={() => setExpand(false)} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} />
-                </div>
-                <div className={expand ? "imgContainer" : "null"}>
-                {urls.map((url, index) => (
-                <img
-                key={index}
-                src={replaceString(url)}
-                className={expand ? 'expandPostImage' : 'postImage'}
-                onClick={() => setExpand(!expand)}
-                />
-                ))}
-                    </div>
-            </div>
-          )
-      }
-    }
    
     useEffect(() => {
         let overflow = expand ? 'hidden' : 'auto';
@@ -257,11 +195,11 @@ export const Post = ({post, onToggleComment}) => {
                 <div className="titleContainer">
                     <h3>{post.title}</h3>
                 </div>
-                {post.url && <div className="imageContainer">
-                    {generateImage(post.url)}
-                </div>}
+                {post.url && 
+                    <Image url={post.url} />
+                }
                 {post.is_gallery === true && <div className="imageContainer">
-                    {generateGallery(post)}
+                    
                     </div>}
                 <div className="detailsContainer">
                     <span className="author">{post.author}</span>
