@@ -22,7 +22,7 @@ export const GalleryImage = ({url, index, expand, setExpand, value, setValue}) =
         style={{position: position, left:`${(index * 100)- (value * 100)}%`}}
         src={url} 
         alt="" 
-        className={expand ? 'expandGalleryPostImage' : 'postImage'}
+        className={expand ? 'expandGalleryPostImage' : 'galleryPostImage'}
         key={index}
         onClick={() => handleExpand()}
         />)

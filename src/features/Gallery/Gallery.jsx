@@ -60,7 +60,7 @@ console.log(value);
                 <div
                 onClick={() => setExpand(false)} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} />
                 </div>
-                <div className={expand ? "imgContainer" : null}>
+                <div className={expand ? "imgContainer" : 'gallerySmall'}>
                 { post.gallery_data.items.map((element, index) => {
                     const originalUrl = post.media_metadata[element.media_id].s;
                     const url = replaceString(originalUrl.u);
