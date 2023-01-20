@@ -124,10 +124,29 @@ button {
     border-radius: 10px;
 }
 
+.postGalleryImage {
+    width: 28%;
+    height: auto;
+    border-radius: 10%;
+    margin: 2%;
+}
+
+.galleryWrapper {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+
+}
+
 .expandPostImage {
     height: 90vh;
     width: auto;
     z-index: 101;
+}
+
+.null {
+    display: none;
 }
 
 .imgContainer {

@@ -16,7 +16,8 @@ export const Image = ({url}) => {
         } else if(!expand){
             document.body.style.overflow = 'auto';
         }
-    })
+    }, [expand])
+
 
     const handlers = useSwipeable({
         onSwiped: (eventData) => setExpand(false),
@@ -24,7 +25,7 @@ export const Image = ({url}) => {
         trackMouse: true,
     });
 
-    
+
    
        
     return(
@@ -33,7 +34,7 @@ export const Image = ({url}) => {
         className={expand ? "expandImgContainer" : null}>
             <div
             onClick={() => setExpand(false)} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} /></div>
-            <div className={expand ? "imgContainer" : "null"}>
+            <div className={expand ? "imgContainer" : "none"}>
             <img 
             src={url} 
             alt="" 

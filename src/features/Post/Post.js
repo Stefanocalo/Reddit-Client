@@ -7,9 +7,9 @@ import { Comments } from "../Comments/Comments";
 import { CommentSkeleton } from "../Comments/CommentSkeleton";
 import { numShortener } from "../../utils/numShortener";
 import { useSelector } from "react-redux";
-import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import { Image } from "../Gallery/Image";
+import { Gallery } from "../Gallery/Gallery";
 
 
 
@@ -196,10 +196,13 @@ export const Post = ({post, onToggleComment}) => {
                     <h3>{post.title}</h3>
                 </div>
                 {post.url && 
-                    <Image url={post.url} />
+                    <div className="imageContainer">
+                        <Image url={post.url} />
+                    </div>
                 }
-                {post.is_gallery === true && <div className="imageContainer">
-                    
+                {post.is_gallery === true && 
+                    <div className="imageContainer">
+                        <Gallery post={post} />
                     </div>}
                 <div className="detailsContainer">
                     <span className="author">{post.author}</span>

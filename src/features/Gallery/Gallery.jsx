@@ -1,38 +1,45 @@
 import React, {useState} from "react";
+import { useEffect } from "react";
 import {AiFillCloseCircle} from 'react-icons/ai'
 
 
-export const Gallery = () => {
+export const Gallery = ({post}) => {
+
+    const [expand, setExpand] = useState(false);
+
+    useEffect(() => {
+        if(post.is_gallery === true) {
+           
+            
+        } else {
+            return
+        }
+
+    }, [])
 
     const replaceString = (url) => {
         return url.replace(/&amp;/g, '&');
     };
 
-    //Generating array of objects containing original and thumbnail urls
-    const generateGallery = (post) => {
+
       
-        let images = [
-
-        ];
-       post.gallery_data.items.map(element => {
-        const originalUrl = replaceString(post.media_metadata[element.media_id].s.u);
-        const thumbnailUrl = replaceString(post.media_metadata[element.media_id].p[3].u);
-        const payload = {
-            original: originalUrl,
-            thumbnail: thumbnailUrl
-        }
-
-        images.push(payload);
-       
-    });
+    
     return(
-        <ImageGallery items={images} useTranslate3D={false}/>
-     )
-      
-    }
+        <div className="galleryWrapper">
+            { post.gallery_data.items.map((element, index) => {
+                const originalUrl = post.media_metadata[element.media_id].s;
 
-
-    return(
-        <div></div>
+                return(
+                        <img
+                         src={replaceString(originalUrl.u)}
+                         className={expand ? 'expandPostImage' : 'postGalleryImage'}
+                         key={index}
+                         />
+                )
+                
+                
+            })}
+          
+        </div>
     )
 }
