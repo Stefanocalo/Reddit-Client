@@ -227,8 +227,12 @@ export const Post = ({post, onToggleComment}) => {
                     <h3>{post.title}</h3>
                 </div>
                 {post.selftext && 
-                    <div>
+                    <div className="selfTextContainer">
                         <p className="postText">{wordShortener(text)}</p>
+                        <div 
+                        onClick={() => setIsShortened(!isShortened) }
+                        role='button'
+                        className="showMoreButton">{isShortened ? 'Show more...' : 'Show less...'}</div>
                     </div>}
                 {(!post.is_gallery && !post.selftext && post.link_flair_type !== 'text' && post.url) && 
                     <div className="imageContainer">
