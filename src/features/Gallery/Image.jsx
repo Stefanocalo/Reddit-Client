@@ -25,8 +25,6 @@ export const Image = ({url}) => {
         trackMouse: true,
     });
 
-
-   
        
     return(
         <div 
@@ -34,7 +32,7 @@ export const Image = ({url}) => {
         className={expand ? "expandImgContainer" : null}>
             <div
             onClick={() => setExpand(false)} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} /></div>
-            <div className={expand ? "imgContainer" : "none"}>
+            <div className={expand ? "imgContainer" : null}>
             <img 
             src={url} 
             alt="" 
