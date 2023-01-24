@@ -213,16 +213,9 @@ export const Post = ({post, onToggleComment}) => {
     return (
         <div className="main">
         <div className={isLightMode ? "postContainer" : "postContainerDark"} key={post.id}>
-            <div className="upsContainer">
-                <button onClick={() => handleVoteUP(1)}>
-                    {renderArrowUp(vote)}
-                </button>
-                {renderUps(vote)}
-                <button onClick={() => handleVoteDOWN(-1)}>
-                    {renderArrowDown(vote)}
-                </button>
-            </div>
+           
             <div className="main">
+                <span className="author">{post.author}</span>
                 <div className="titleContainer">
                     <h3>{post.title}</h3>
                 </div>
@@ -243,8 +236,16 @@ export const Post = ({post, onToggleComment}) => {
                     <div className="imageContainer">
                         <Gallery post={post} />
                     </div>}
-                <div className="detailsContainer">
-                    <span className="author">{post.author}</span>
+                    <div className="detailsContainer">
+                        <div className="upsContainer">
+                            <button onClick={() => handleVoteUP(1)}>
+                                {renderArrowUp(vote)}
+                            </button>
+                            {renderUps(vote)}
+                            <button onClick={() => handleVoteDOWN(-1)}>
+                                {renderArrowDown(vote)}
+                            </button>
+                        </div>
                     <span className="time">{moment.unix(post.created_utc).fromNow()}</span>
                         <button
                          className={isLightMode ? 'comments' : 'commentsDark'}

@@ -90,7 +90,6 @@ button {
 
 .upsContainer {
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
@@ -238,6 +237,7 @@ button {
 .author {
     color:  rgb(84, 99, 186);
     font-weight: 600;
+    width: 80%;
 }
 
 .time {
@@ -445,5 +445,8 @@ button {
         width: 100vw;
         height: auto;
         margin: 0;
+    }
+    .author {
+        width: 95%;
     }
 }
