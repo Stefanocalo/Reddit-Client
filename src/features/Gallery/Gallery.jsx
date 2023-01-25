@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useSwipeable } from "react-swipeable";
+import {BsFillArrowRightCircleFill} from 'react-icons/bs';
+import './gallery.css';
 
 
 import {AiFillCloseCircle} from 'react-icons/ai';
@@ -64,7 +66,17 @@ export const Gallery = ({post}) => {
                     const originalUrl = post.media_metadata[element.media_id].s;
                     const url = replaceString(originalUrl.u);
                    return(<GalleryImage url={url} key={index} index={index} expand={expand} setExpand={setExpand} value={value} setValue={setValue}/>)
-                })}  
+                })}
+                { expand && (
+                    <>
+                    {value !== 0 && 
+                    <BsFillArrowRightCircleFill className='galleryArrow' id='leftArrow' onClick={() => handleSwipeRight()}/>
+                    }
+                    {value !== (post.gallery_data.items.length - 1) &&
+                    <BsFillArrowRightCircleFill className='galleryArrow' id='rightArrow' onClick={() => handleSwipeLeft()}/>  
+                    }
+                    </>)
+                }
                 </div>
             </div>
         </div>

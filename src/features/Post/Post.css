@@ -81,11 +81,13 @@ button {
     display: flex;
 }
 
+.titleContainer {
+    width: 100%;
+}
+
 .titleContainer h3{
     font-size: 1.2rem;
-    margin: 2%;
     width: 100%;
-    transition: 0.2s;
 }
 
 .upsContainer {
@@ -237,7 +239,7 @@ button {
 .author {
     color:  rgb(84, 99, 186);
     font-weight: 600;
-    width: 80%;
+    width: 100%;
 }
 
 .time {

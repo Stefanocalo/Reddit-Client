@@ -1,0 +1,31 @@
+.galleryArrow {
+    font-size: 2rem;
+    z-index: 120;
+    color: rgb(240, 240, 240);
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+.galleryArrow:hover {
+    color: rgba(240, 240, 240, 0.5);
+}
+
+#leftArrow {
+    transform: rotate(180deg);
+    position: fixed;
+    top: 50%;
+    left: 5%;
+}
+
+#rightArrow {
+    position: fixed;
+    top: 50%;
+    right: 5%;
+}
+
+@media only screen and (max-width: 600px) {
+ .galleryArrow {
+        display: none;
+    }
+}
+
