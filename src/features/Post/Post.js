@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { useDispatch } from "react-redux";
 import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
 import {BiCommentDetail, BiErrorCircle} from 'react-icons/bi';
@@ -10,10 +11,12 @@ import { useSelector } from "react-redux";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { Image } from "../Gallery/Image";
 import { Gallery } from "../Gallery/Gallery";
+import { getUserProfile } from "../../api/api";
+import { fetchAuthor } from "../../store/redditSlice";
 
 
 
-export const Post = ({post, onToggleComment}) => {
+export const Post = ({post, index, onToggleComment}) => {
 
     const [vote, setVote] = useState(0);
     const [numComm, setNumComm] = useState(3);
@@ -22,7 +25,7 @@ export const Post = ({post, onToggleComment}) => {
 
     const isLightMode = useSelector((state) => state.reddit.isLightMode);
 
-
+    const dispatch = useDispatch();
    
     useEffect(() => {
         let overflow = expand ? 'hidden' : 'auto';
@@ -31,7 +34,9 @@ export const Post = ({post, onToggleComment}) => {
 
     }, [expand]);
 
-
+    useEffect(() => {
+        dispatch(fetchAuthor(index, post.author));
+    },[])
     // Ups arrows rendering handler funcitons
 
     const handleVoteUP = (newValue) => {
@@ -142,10 +147,7 @@ export const Post = ({post, onToggleComment}) => {
                 </button>  
             )
         } 
-    }
-
-
-    
+    }    
 
     // Rendering comments handler function
 
@@ -204,18 +206,22 @@ export const Post = ({post, onToggleComment}) => {
         } else {
             return text
         }
-           
-        
       }
 
-      
+      const replaceString = (url) => {
+        return url.toString().replace(/&amp;/g, '&');
+    };
 
     return (
         <div className="main">
         <div className={isLightMode ? "postContainer" : "postContainerDark"} key={post.id}>
            
             <div className="main">
-                <span className="author">{post.author}</span>
+                <div className='authorContainer'>
+                    {post.author_data.icon_img?.length > 1 && <img className='authorAvatar' alt='profile avatar' src={replaceString(post.author_data.icon_img)} />}
+                    <span className="author">{post.author}</span>
+                </div>
+                <span className="subreddit">{post.subreddit_name_prefixed}</span>
                 <div className="titleContainer">
                     <h3>{post.title}</h3>
                 </div>

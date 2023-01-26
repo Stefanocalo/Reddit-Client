@@ -72,6 +72,7 @@ export const Feed = () => {
             {posts.map((post, index) => {
                 return (
                         <Post
+                    index={index}
                     post={post}
                     key={post.id}
                     onToggleComment={onToggleComment(index)}/> 

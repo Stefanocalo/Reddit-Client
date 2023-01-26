@@ -1,5 +1,5 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
-import { getSubRedditsPosts, getPostComments } from "../api/api";
+import { getSubRedditsPosts, getPostComments, getUserProfile } from "../api/api";
 
 
 const initialState = {
@@ -29,6 +29,9 @@ const redditSlice = createSlice({
         getPostsFail: (state) => {
             state.isLoading = false;
             state.error = true;
+        },
+        getAuthorSuccess: (state,action) => {
+            state.posts[action.payload.index].author_data = action.payload.author
         },
         setSearchTerm: (state, action) => {
             state.searchTerm = action.payload;
@@ -79,6 +82,7 @@ export const {
     startGetComments,
     getCommentSuccess,
     getCommentsFail,
+    getAuthorSuccess,
     toggleDarkMode
 } = redditSlice.actions;
 
@@ -91,10 +95,10 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
     try {
       dispatch(startGetPosts());
       const posts = await getSubRedditsPosts(subreddit);
-      
       //hHiding comment as default
       const postsWithMetadata = posts.map((post) => ({
         ...post,
+        author_data: [],
         showingComments: false,
         comments: [],
         loadingComments: false,
@@ -106,6 +110,20 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
     }
   };
 
+  export const fetchAuthor = (index, authorName) => async(dispatch) => {
+    try{
+        const author = await getUserProfile(authorName);
+        const payload = {
+            index: index,
+            author: author
+        }
+        dispatch(getAuthorSuccess(payload));
+
+    }catch(error) {
+        console.log(error);
+    }
+    
+  }
 
 
   export const fetchComment = (index, permalink) => async (dispatch) => {

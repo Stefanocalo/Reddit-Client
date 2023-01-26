@@ -1,5 +1,4 @@
 
-
 .up {
     font-size: 1.3rem;
     cursor: pointer;
@@ -85,6 +84,11 @@ button {
     width: 100%;
 }
 
+.subreddit {
+    font-size: 0.6rem;
+    width: 100%;
+}
+
 .titleContainer h3{
     font-size: 1.2rem;
     width: 100%;
@@ -145,7 +149,7 @@ button {
 }
 
 .postImage {
-    width: 60%;
+    width: 80%;
     height: auto;
     border-radius: 10px;
 }
@@ -162,6 +166,8 @@ button {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    max-height: 20rem;
+    overflow: hidden;
     justify-content: center;
 }
 
@@ -239,6 +245,19 @@ button {
 .author {
     color:  rgb(84, 99, 186);
     font-weight: 600;
+    width: 100%;
+}
+
+.authorAvatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin: 0.4rem;
+}
+
+.authorContainer {
+    display: flex;
+    align-items: center;
     width: 100%;
 }
 
@@ -448,7 +467,7 @@ button {
         height: auto;
         margin: 0;
     }
-    .author {
-        width: 95%;
+    .postImage {
+        width: 100%;
     }
 }

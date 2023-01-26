@@ -23,4 +23,10 @@ export const getSubreddits = async () => {
   
     return json[1].data.children.map((subreddit) => subreddit.data);
   };
+
+  export const getUserProfile = async (user) => {
+    const response = await fetch(`${API_ROOT}/user/${user}/about.json`);
+    const json = await response.json();
+    return json.data;
+  }
   
