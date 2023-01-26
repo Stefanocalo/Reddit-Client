@@ -233,8 +233,8 @@ export const Post = ({post, index, onToggleComment}) => {
                         role='button'
                         className="showMoreButton">{isShortened ? 'Show more...' : 'Show less...'}</div>
                     </div>}
-                {(!post.is_gallery && post.url && post.thumbnail_width !== null) && 
-                    <div className="imageContainer">
+                {(!post.is_gallery && post.url && post.thumbnail !== null && post.post_hint !== 'link') && 
+                    <div className="test">
                         <Image url={post.url} />
                     </div>
                 }
