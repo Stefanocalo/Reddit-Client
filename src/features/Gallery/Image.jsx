@@ -6,16 +6,20 @@ import { useSwipeable } from "react-swipeable";
 
 
 
-export const Image = ({url}) => {
+export const Image = ({url, thumbnail}) => {
 
     const [expand, setExpand] = useState(false);
+    const [src, setSrc] = useState(thumbnail);
 
     useEffect(() => {
         if(expand) {
             document.body.style.overflow = 'hidden';
+            setSrc(url);
         } else if(!expand){
             document.body.style.overflow = 'auto';
+            setSrc(thumbnail);
         }
+
     }, [expand])
 
 
@@ -34,7 +38,7 @@ export const Image = ({url}) => {
             onClick={() => setExpand(false)} ><AiFillCloseCircle className={expand ? 'clsBtnActive' : 'clsBtn'} /></div>
             <div className={expand ? "imgContainer" : 'imgSmall'}>
             <img 
-            src={url} 
+            src={src} 
             alt="" 
             className={expand ? 'expandPostImage' : 'postImage'}
             onClick={() => setExpand(true)}

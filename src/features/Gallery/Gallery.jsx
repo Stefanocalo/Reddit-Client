@@ -63,8 +63,14 @@ export const Gallery = ({post}) => {
                 </div>
                 <div className={expand ? "imgContainer" : 'gallerySmall'}>
                 { post.gallery_data.items.map((element, index) => {
-                    const originalUrl = post.media_metadata[element.media_id].s;
-                    const url = replaceString(originalUrl.u);
+                    const hdlUrl = post.media_metadata[element.media_id].p[5];
+                    const thumbnail = post.media_metadata[element.media_id].p[2];
+                    let url;
+                    if(thumbnail) {
+                        url = expand ? replaceString(hdlUrl.u) : replaceString(thumbnail.u);
+                    } else {
+                        url = replaceString(hdlUrl.u);
+                    }
                    return(<GalleryImage url={url} key={index} index={index} expand={expand} setExpand={setExpand} value={value} setValue={setValue}/>)
                 })}
                 { expand && (

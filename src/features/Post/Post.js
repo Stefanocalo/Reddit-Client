@@ -235,7 +235,7 @@ export const Post = ({post, index, onToggleComment}) => {
                     </div>}
                 {(!post.is_gallery && post.url && post.thumbnail !== null && !post.selftext) && 
                     <div className="imageContainer">
-                        <Image url={post.url} />
+                        <Image url={post.url} thumbnail={post.thumbnail} />
                     </div>
                 }
                 {post.post_hint === 'link' && 
