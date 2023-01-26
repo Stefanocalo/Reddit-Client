@@ -23,6 +23,26 @@
     right: 5%;
 }
 
+
+.banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    background-color: rgba(50, 50, 50, 0.3);
+    backdrop-filter: blur(1.5rem);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transform: translateY(3rem);
+    color: rgb(240, 240, 240);
+}
+
+ a {
+    text-decoration: none;
+}
+
+
 @media only screen and (max-width: 600px) {
  .galleryArrow {
         display: none;

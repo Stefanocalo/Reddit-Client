@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { Image } from "../Gallery/Image";
 import { Gallery } from "../Gallery/Gallery";
-import { getUserProfile } from "../../api/api";
+import { Video } from "../Gallery/Video";
 import { fetchAuthor } from "../../store/redditSlice";
 
 
@@ -236,6 +236,11 @@ export const Post = ({post, index, onToggleComment}) => {
                 {(!post.is_gallery && post.url && post.thumbnail_width !== null) && 
                     <div className="imageContainer">
                         <Image url={post.url} />
+                    </div>
+                }
+                {post.post_hint === 'link' && 
+                    <div className="imageContainer">
+                        <Video url={post.thumbnail} link={post.url}/>
                     </div>
                 }
                 {post.is_gallery === true && 
