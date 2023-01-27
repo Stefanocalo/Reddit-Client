@@ -24,6 +24,18 @@
     
 }
 
+.commentAuthor {
+    color:  rgb(84, 99, 186);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.authorContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .replyContainer {
     width: 90%;
     height: 50%;
