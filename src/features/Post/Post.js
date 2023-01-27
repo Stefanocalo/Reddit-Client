@@ -1,17 +1,22 @@
 import React, {useEffect, useState} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+
 import './Post.css'
 import {TbArrowBigTop, TbArrowBigDown} from 'react-icons/tb';
 import {BiCommentDetail, BiErrorCircle} from 'react-icons/bi';
 import moment from 'moment';
+
+
 import { Comments } from "../Comments/Comments";
 import { CommentSkeleton } from "../Comments/CommentSkeleton";
-import { numShortener } from "../../utils/numShortener";
-import { useSelector } from "react-redux";
-import "react-image-gallery/styles/css/image-gallery.css";
 import { Image } from "../Gallery/Image";
 import { Gallery } from "../Gallery/Gallery";
 import { Video } from "../Gallery/Video";
+
+
+import { numShortener } from "../../utils/numShortener";
+import "react-image-gallery/styles/css/image-gallery.css";
 import { fetchAuthor } from "../../store/redditSlice";
 
 
@@ -199,6 +204,8 @@ export const Post = ({post, index, onToggleComment}) => {
         }
     },[post])
 
+    //Collapse long text
+
     const wordShortener = (str) => { 
         if(isShortened) {
             let shortened = str.slice(0,300);
@@ -229,7 +236,7 @@ export const Post = ({post, index, onToggleComment}) => {
                     <div className="selfTextContainer">
                         <p className="postText">{wordShortener(text)}</p>
                         <div 
-                        onClick={() => setIsShortened(!isShortened) }
+                        onClick={() =>  setIsShortened(!isShortened)}
                         role='button'
                         className="showMoreButton">{isShortened ? 'Show more...' : 'Show less...'}</div>
                     </div>}

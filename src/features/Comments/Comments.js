@@ -15,8 +15,9 @@ export const Comments = ({comment, id}) => {
                 </div>
                 <p className="commentBody">{comment.body}</p>
             </div>
-            {comment.replies && comment.replies.data.children.map((reply) => (
-                <div className="replyContainer" key={reply.data.id}>
+            {comment.replies && comment.replies.data.children.map((reply) => {
+                if(reply.data.body) {
+                    return  <div className="replyContainer" key={reply.data.id}>
                     <div className={isLightMode ? "replyWrapper" : "replyWrapperDark"}>
                         <div className="authorContainer">
                             <span className="author"> {reply.data.author} </span>
@@ -25,7 +26,9 @@ export const Comments = ({comment, id}) => {
                         <p className="commentBody">{reply.data.body}</p>
                     </div>
                 </div>
-            ))}
+                }
+               
+        })}
         </div>
 
     )

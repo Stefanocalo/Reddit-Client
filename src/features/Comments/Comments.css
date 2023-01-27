@@ -45,6 +45,7 @@
 
 .commentBody {
     padding-top: 1rem;
+    word-break: break-all;
 }
 
 /*  Dark Mode  */
