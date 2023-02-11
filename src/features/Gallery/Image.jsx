@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import {AiFillCloseCircle} from 'react-icons/ai'
 
 import { useSwipeable } from "react-swipeable";
+import { useSpring, useSpringValue, animated, config } from "@react-spring/web";
+
 
 
 
@@ -28,6 +30,10 @@ export const Image = ({url, thumbnail}) => {
         delta: 10,
         trackMouse: true,
     });
+
+    const styles = useSpring({
+        
+    })
 
        
     return(
