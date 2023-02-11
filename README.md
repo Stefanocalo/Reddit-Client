@@ -111,13 +111,17 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Just type what you would like Dall-E to create and enjoy the result!
+Just visit the page and enjoy Reddit content without the worry to log in!
 
-<img align="center" src="media/example.gif" alt="example" width="400" height="260">
+<img align="center" src="./media/example.gif" alt="example" width="400" height="260">
 
-If you don't feel inspired not to worry! Simply leave the input field empty and you can generate a random image!
+Feel free to choose between light and dark mode now! You can simply click at the theme icon situated on the right side of the navbar (on both desktop and mobile), and the app will seamlessy switch the theme.
 
-<img align="center" src="media/rnd_image.gif" alt="second example" width="400" height="260">
+<img align="center" src="media/darkMode.gif" alt="second example" width="400" height="260">
+
+Have a look at comments without the worry to be redirected to external links.
+
+<img align="center" src="./media/comments.gif" alt="third expample" width="400" height="260">
 
 <br>
 
