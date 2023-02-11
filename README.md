@@ -101,10 +101,6 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
-4.Create a .env file in the root folder and enter API:
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
